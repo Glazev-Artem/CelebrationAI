@@ -1,0 +1,140 @@
+<resources>
+    <string name="app_name">С ДР КРЧ!</string>
+
+    <!-- Навигация и заголовки -->
+    <string name="title_celebrations">Мои события</string>
+    <string name="title_add_celebration">Добавить событие</string>
+    <string name="title_edit_celebration">Изменить событие</string>
+    <string name="title_new_celebration">Новое событие</string>
+    <string name="title_about">О приложении</string>
+
+    <!-- Кнопки -->
+    <string name="btn_save">Сохранить</string>
+    <string name="btn_copy">Копировать</string>
+    <string name="btn_select">Выбрать</string>
+    <string name="btn_regenerate">Переписать</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_done">Готово</string>
+    <string name="btn_exit">Выход</string>
+    <string name="btn_generate_greeting">Создать поздравление</string>
+    <string name="btn_gift_ideas">Идеи подарков</string>
+    <string name="btn_import_contacts">Импорт из контактов</string>
+    <string name="btn_backup_settings">Настройки резервного копирования</string>
+    <string name="btn_feedback">Написать разработчику (ВК)</string>
+
+    <!-- Поля ввода -->
+    <string name="hint_name">Имя именинника</string>
+    <string name="hint_hobby">Хобби (например, рыбалка, кино)</string>
+    <string name="hint_profession">Профессия</string>
+    <string name="label_date">Дата события</string>
+    <string name="label_tone">Тон поздравления</string>
+    <string name="label_group">Группа</string>
+    <string name="label_type">Тип события:</string>
+    <string name="label_name">Имя</string>
+    <string name="label_profession">Профессия</string>
+    <string name="label_hobby">Хобби</string>
+    <string name="label_notifications">Уведомление</string>
+    <string name="label_remind_ahead">Напомнить заранее: %1$s</string>
+    <string name="label_on_day">в день праздника</string>
+    <string name="label_days_format">%1$d дн.</string>
+
+    <!-- Состояния и уведомления -->
+    <string name="empty_list">Пока здесь пусто. Нажмите +, чтобы добавить первое событие!</string>
+    <string name="loading_ai">Магия AI в процессе...</string>
+    <string name="error_ai">Не удалось получить ответ от AI</string>
+    <string name="permission_notifications_title">Настройки и Резервное копирование</string>
+    <string name="permission_notifications_desc">Выберите время для утреннего напоминания:</string>
+
+    <!-- Инструкция по бэкапу -->
+    <string name="backup_title">Как не потерять данные?</string>
+    <string name="backup_instruction">Ваши данные сохраняются в Google Облако автоматически. Чтобы это работало:\n\n1. Зайдите в настройки телефона.\n2. Найдите раздел \"Google\" или \"Резервное копирование\".\n3. Убедитесь, что переключатель \"Автозагрузка\" включен.\n\nТеперь, если вы смените телефон, все поздравления восстановятся сами!</string>
+
+    <string name="footer_line1">Лавка приложений</string>
+    <string name="footer_line2">автор Глазьев Артем</string>
+
+    <!-- Добавленные строки для UI -->
+    <string name="label_zodiac">Знак зодиака</string>
+    <string name="label_chinese_zodiac">Восточный год</string>
+    <string name="label_lived">Прожито</string>
+    <string name="label_fun_facts">Интересные факты:</string>
+    <string name="btn_close">Закрыть</string>
+    <string name="title_ai_greeting">Поздравление от ИИ</string>
+    <string name="label_late_greeting">Я опоздал с поздравлением</string>
+    <string name="btn_think_greeting">Придумай поздравление</string>
+    <string name="label_greeting_archive">Архив поздравлений:</string>
+    <string name="title_gifts_for">Подарки для %1$s</string>
+    <string name="label_wishlist">Список желаний:</string>
+    <string name="hint_wishlist">Введите пожелания...</string>
+    <string name="btn_save_list">Сохранить список</string>
+    <string name="label_saved">Сохранено!</string>
+    <string name="label_ai_ideas">Идеи от ИИ:</string>
+    <string name="btn_generate">Генерировать</string>
+    <string name="hint_generate_gifts">Нажмите \'Генерировать\', чтобы получить реалистичные идеи подарков</string>
+    <string name="title_settings">Настройки</string>
+    <string name="label_account">Аккаунт</string>
+    <string name="label_logged_as">Вы вошли как: %1$s</string>
+    <string name="btn_sign_out">Выйти</string>
+    <string name="btn_sign_in_google">Войти через Google</string>
+    <string name="label_security">Безопасность</string>
+    <string name="label_biometric_login">Вход по биометрии</string>
+    <string name="label_language">Язык (AI и интерфейс)</string>
+    <string name="label_theme">Тема оформления</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Темная</string>
+    <string name="theme_celebration">Праздничная</string>
+    <string name="label_default_reminder">Напоминание по умолчанию</string>
+    <string name="label_remind_before">За </string>
+    <string name="label_days_before"> дн. до события</string>
+    <string name="label_time">Время: %1$s</string>
+    <string name="label_today">Сегодня!</string>
+    <string name="label_years_short">лет</string>
+    <string name="label_not_born">Еще не родился :)</string>
+    <string name="label_days_lived">Прожито дней: %1$d</string>
+    <string name="label_privacy_policy">Политика конфиденциальности</string>
+
+    <!-- Enums -->
+    <string name="tone_romantic">Романтично</string>
+    <string name="tone_solemn">Торжественно</string>
+    <string name="tone_official">Официально</string>
+    <string name="tone_humorous">Шуточно</string>
+    <string name="tone_dark_humor">С черным юмором</string>
+
+    <string name="type_birthday">День рождения</string>
+    <string name="type_wedding">Свадьба</string>
+    <string name="type_anniversary">Годовщина</string>
+    <string name="type_other">Другое</string>
+
+    <string name="group_none">Без группы</string>
+    <string name="group_family">Семья</string>
+    <string name="group_friends">Друзья</string>
+    <string name="group_work">Работа</string>
+    <string name="group_important">Важное</string>
+
+    <!-- Zodiac -->
+    <string name="zodiac_aries">Овен</string>
+    <string name="zodiac_taurus">Телец</string>
+    <string name="zodiac_gemini">Близнецы</string>
+    <string name="zodiac_cancer">Рак</string>
+    <string name="zodiac_leo">Лев</string>
+    <string name="zodiac_virgo">Дева</string>
+    <string name="zodiac_libra">Весы</string>
+    <string name="zodiac_scorpio">Скорпион</string>
+    <string name="zodiac_sagittarius">Стрелец</string>
+    <string name="zodiac_capricorn">Козерог</string>
+    <string name="zodiac_aquarius">Водолей</string>
+    <string name="zodiac_pisces">Рыбы</string>
+
+    <!-- Chinese Zodiac -->
+    <string name="cz_rat">Крыса</string>
+    <string name="cz_ox">Бык</string>
+    <string name="cz_tiger">Тигр</string>
+    <string name="cz_rabbit">Кролик</string>
+    <string name="cz_dragon">Дракон</string>
+    <string name="cz_snake">Змея</string>
+    <string name="cz_horse">Лошадь</string>
+    <string name="cz_goat">Коза</string>
+    <string name="cz_monkey">Обезьяна</string>
+    <string name="cz_rooster">Петух</string>
+    <string name="cz_dog">Собака</string>
+    <string name="cz_pig">Свинья</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Используем тему AppCompat для совместимости с BiometricPrompt и AppCompatActivity -->
+    <style name="Theme.CelebrationAI" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Убираем стандартные отступы и цвета, так как всё рисует Compose -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

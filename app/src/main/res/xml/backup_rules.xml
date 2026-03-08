@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Включаем базу данных Room -->
+    <include domain="database" path="celebration_database" />
+    <include domain="database" path="celebration_database-shm" />
+    <include domain="database" path="celebration_database-wal" />
+
+    <!-- Включаем настройки SharedPreferences -->
+    <include domain="sharedpref" path="app_settings.xml" />
+</full-backup-content>

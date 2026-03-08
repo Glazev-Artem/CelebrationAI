@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name">HBD BRO!</string>
+
+    <!-- Navigation and Titles -->
+    <string name="title_celebrations">My Events</string>
+    <string name="title_add_celebration">Add Event</string>
+    <string name="title_edit_celebration">Edit Event</string>
+    <string name="title_new_celebration">New Event</string>
+    <string name="title_about">About App</string>
+
+    <!-- Buttons -->
+    <string name="btn_save">Save</string>
+    <string name="btn_copy">Copy</string>
+    <string name="btn_select">Select</string>
+    <string name="btn_regenerate">Rewrite</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_exit">Exit</string>
+    <string name="btn_generate_greeting">Create Greeting</string>
+    <string name="btn_gift_ideas">Gift Ideas</string>
+    <string name="btn_import_contacts">Import from Contacts</string>
+    <string name="btn_backup_settings">Backup Settings</string>
+    <string name="btn_feedback">Contact Developer</string>
+
+    <!-- Input Fields -->
+    <string name="hint_name">Name</string>
+    <string name="hint_hobby">Hobby (e.g., fishing, cinema)</string>
+    <string name="hint_profession">Profession</string>
+    <string name="label_date">Event Date</string>
+    <string name="label_tone">Greeting Tone</string>
+    <string name="label_group">Group</string>
+    <string name="label_type">Event Type:</string>
+    <string name="label_name">Name</string>
+    <string name="label_profession">Profession</string>
+    <string name="label_hobby">Hobby</string>
+    <string name="label_notifications">Notification</string>
+    <string name="label_remind_ahead">"Remind in advance: %1$s"</string>
+    <string name="label_on_day">on the day of the holiday</string>
+    <string name="label_days_format">%1$d days</string>
+
+    <!-- States and Notifications -->
+    <string name="empty_list">"It's empty here. Press + to add your first event!"</string>
+    <string name="loading_ai">AI magic in progress...</string>
+    <string name="error_ai">Failed to get response from AI</string>
+    <string name="permission_notifications_title">Settings &amp; Backup</string>
+    <string name="permission_notifications_desc">Choose time for morning reminder:</string>
+
+    <!-- Backup Instruction -->
+    <string name="backup_title">How to not lose data?</string>
+    <string name="backup_instruction">"Your data is saved to Google Cloud automatically. To make it work:\n\n1. Go to phone settings.\n2. Find Google or Backup.\n3. Make sure Back up by Google One is on.\n\nNow if you change your phone, all greetings will restore themselves!"</string>
+
+    <string name="footer_line1">App Shop</string>
+    <string name="footer_line2">by Artem Glazev</string>
+
+    <!-- Added strings for UI -->
+    <string name="label_zodiac">Zodiac Sign</string>
+    <string name="label_chinese_zodiac">Chinese Zodiac</string>
+    <string name="label_lived">Lived</string>
+    <string name="label_fun_facts">Interesting Facts:</string>
+    <string name="btn_close">Close</string>
+    <string name="title_ai_greeting">AI Greeting</string>
+    <string name="label_late_greeting">"I'm late with the greeting"</string>
+    <string name="btn_think_greeting">Generate Greeting</string>
+    <string name="label_greeting_archive">Greeting Archive:</string>
+    <string name="title_gifts_for">Gifts for %1$s</string>
+    <string name="label_wishlist">Wishlist:</string>
+    <string name="hint_wishlist">Enter wishes...</string>
+    <string name="btn_save_list">Save list</string>
+    <string name="label_saved">Saved!</string>
+    <string name="label_ai_ideas">AI Ideas:</string>
+    <string name="btn_generate">Generate</string>
+    <string name="hint_generate_gifts">"Click 'Generate' to get realistic gift ideas"</string>
+    <string name="title_settings">Settings</string>
+    <string name="label_account">Account</string>
+    <string name="label_logged_as">Logged in as: %1$s</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="btn_sign_in_google">Sign in with Google</string>
+    <string name="label_security">Security</string>
+    <string name="label_biometric_login">Biometric Login</string>
+    <string name="label_language">Language (AI &amp; UI)</string>
+    <string name="label_theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_celebration">Celebration</string>
+    <string name="label_default_reminder">Default Reminder</string>
+    <string name="label_remind_before">Remind </string>
+    <string name="label_days_before"> days before event</string>
+    <string name="label_time">Time: %1$s</string>
+    <string name="label_today">Today!</string>
+    <string name="label_years_short">years</string>
+    <string name="label_not_born">Not born yet :)</string>
+    <string name="label_days_lived">Days lived: %1$d</string>
+
+    <!-- Enums -->
+    <string name="tone_romantic">Romantic</string>
+    <string name="tone_solemn">Solemn</string>
+    <string name="tone_official">Official</string>
+    <string name="tone_humorous">Humorous</string>
+    <string name="tone_dark_humor">Dark Humor</string>
+
+    <string name="type_birthday">Birthday</string>
+    <string name="type_wedding">Wedding</string>
+    <string name="type_anniversary">Anniversary</string>
+    <string name="type_other">Other</string>
+
+    <string name="group_none">No group</string>
+    <string name="group_family">Family</string>
+    <string name="group_friends">Friends</string>
+    <string name="group_work">Work</string>
+    <string name="group_important">Important</string>
+
+    <!-- Zodiac -->
+    <string name="zodiac_aries">Aries</string>
+    <string name="zodiac_taurus">Taurus</string>
+    <string name="zodiac_gemini">Gemini</string>
+    <string name="zodiac_cancer">Cancer</string>
+    <string name="zodiac_leo">Leo</string>
+    <string name="zodiac_virgo">Virgo</string>
+    <string name="zodiac_libra">Libra</string>
+    <string name="zodiac_scorpio">Scorpio</string>
+    <string name="zodiac_sagittarius">Sagittarius</string>
+    <string name="zodiac_capricorn">Capricorn</string>
+    <string name="zodiac_aquarius">Aquarius</string>
+    <string name="zodiac_pisces">Pisces</string>
+
+    <!-- Chinese Zodiac -->
+    <string name="cz_rat">Rat</string>
+    <string name="cz_ox">Ox</string>
+    <string name="cz_tiger">Tiger</string>
+    <string name="cz_rabbit">Rabbit</string>
+    <string name="cz_dragon">Dragon</string>
+    <string name="cz_snake">Snake</string>
+    <string name="cz_horse">Horse</string>
+    <string name="cz_goat">Goat</string>
+    <string name="cz_monkey">Monkey</string>
+    <string name="cz_rooster">Rooster</string>
+    <string name="cz_dog">Dog</string>
+    <string name="cz_pig">Pig</string>
+</resources>
