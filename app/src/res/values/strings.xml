@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Celebration AI</string>
+
+    <!-- Навигация и заголовки -->
+    <string name="title_celebrations">Мои события</string>
+    <string name="title_add_celebration">Добавить событие</string>
+    <string name="title_edit_celebration">Редактировать</string>
+
+    <!-- Кнопки -->
+    <string name="btn_save">Сохранить</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_generate_greeting">Создать поздравление</string>
+    <string name="btn_gift_ideas">Идеи подарков</string>
+    <string name="btn_import_contacts">Импорт из контактов</string>
+
+    <!-- Поля ввода -->
+    <string name="hint_name">Имя именинника</string>
+    <string name="hint_hobby">Хобби (например, рыбалка, кино)</string>
+    <string name="hint_profession">Профессия</string>
+    <string name="label_date">Дата события</string>
+    <string name="label_tone">Тон поздравления</string>
+    <string name="label_group">Группа</string>
+
+    <!-- Состояния и уведомления -->
+    <string name="empty_list">Пока здесь пусто. Нажмите +, чтобы добавить первое событие!</string>
+    <string name="loading_ai">Магия AI в процессе...</string>
+    <string name="error_ai">Не удалось получить ответ от AI</string>
+    <string name="permission_notifications_title">Разрешение на уведомления</string>
+    <string name="permission_notifications_desc">Чтобы мы могли вовремя напомнить вам о празднике, разрешите отправку уведомлений.</string>
+</resources>

@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">Бәйрәм белән!</string>
+
+    <!-- Навигация һәм тартмалар -->
+    <string name="title_celebrations">Минем вакыйгалар</string>
+    <string name="title_add_celebration">Вакыйга өстәү</string>
+    <string name="title_edit_celebration">Вакыйганы үзгәртү</string>
+    <string name="title_new_celebration">Яңа вакыйга</string>
+
+    <!-- Төймәләр -->
+    <string name="btn_save">Саклау</string>
+    <string name="btn_copy">Күчереп алу</string>
+    <string name="btn_select">Сайлау</string>
+    <string name="btn_regenerate">Яңадан язу</string>
+    <string name="btn_cancel">Бас тарту</string>
+    <string name="btn_done">Әзер</string>
+    <string name="btn_exit">Чыгу</string>
+    <string name="btn_generate_greeting">Тотрыклы котлау ясау</string>
+    <string name="btn_gift_ideas">Бүләк идеяләре</string>
+    <string name="btn_import_contacts">Контактлардан импортлау</string>
+    <string name="btn_backup_settings">Резерв күчермә көйләүләре</string>
+
+    <!-- Керү кырлары -->
+    <string name="hint_name">Исеме</string>
+    <string name="hint_hobby">Хобби (мәсәлән, балык тоту, кино)</string>
+    <string name="hint_profession">Һөнәре</string>
+    <string name="label_date">Вакыйга көне</string>
+    <string name="label_tone">Котлау стиле</string>
+    <string name="label_group">Төркем</string>
+    <string name="label_type">Вакыйга төре:</string>
+    <string name="label_name">Исеме</string>
+    <string name="label_profession">Һөнәре</string>
+    <string name="label_hobby">Хобби</string>
+    <string name="label_notifications">Белдерү</string>
+    <string name="label_remind_ahead">"Алдан хәбәр итү: %1$s"</string>
+    <string name="label_on_day">бәйрәм көнендә</string>
+    <string name="label_days_format">%1$d көн</string>
+
+    <!-- Хәлләр һәм белдерүләр -->
+    <string name="empty_list">Биредә әлегә буш. Беренче вакыйганы өстәү өчен + басыгыз!</string>
+    <string name="loading_ai">AI сихере башкарыла...</string>
+    <string name="error_ai">AI-дан җавап алып булмады</string>
+    <string name="permission_notifications_title">Көйләүләр һәм резерв күчермә</string>
+    <string name="permission_notifications_desc">Иртәнге хәбәр итү вакытын сайлагыз:</string>
+
+    <!-- Резерв күчермә инструкциясе -->
+    <string name="backup_title">Мәгълүматны ничек югалтмаска?</string>
+    <string name="backup_instruction">"Сезнең мәгълүматлар Google болытына автоматик рәвештә саклана. Бу эшләсен өчен:\n\n1. Телефон көйләүләренә керегез.\n2. Google яки Резерв күчермә бүлеген табыгыз.\n3. Автоматик йөкләнеш кабызылган булуын тикшерегез.\n\nХәзер телефонны алыштырсагыз, барлык котлаулар үзлегеннән торгызылачак!"</string>
+
+    <string name="footer_line1">Кушымталар кибете</string>
+    <string name="footer_line2">авторы Глазьев Артем</string>
+
+    <!-- UI өчен өстәмә юллар -->
+    <string name="label_zodiac">Зодиак билгесе</string>
+    <string name="label_chinese_zodiac">Көнчыгыш елы</string>
+    <string name="label_lived">Яшәлгән</string>
+    <string name="label_fun_facts">Кызыклы фактлар:</string>
+    <string name="btn_close">Ябу</string>
+    <string name="title_ai_greeting">AI-дан котлау</string>
+    <string name="label_late_greeting">"Мин котлауга соңардым"</string>
+    <string name="btn_think_greeting">Котлау уйлап тап</string>
+    <string name="label_greeting_archive">Котлаулар архивы:</string>
+    <string name="title_gifts_for">%1$s өчен бүләкләр</string>
+    <string name="label_wishlist">Теләкләр исемлеге:</string>
+    <string name="hint_wishlist">Теләкләрне языгыз...</string>
+    <string name="btn_save_list">Исемлекне саклау</string>
+    <string name="label_saved">Сакланды!</string>
+    <string name="label_ai_ideas">AI идеяләре:</string>
+    <string name="btn_generate">Генерацияләү</string>
+    <string name="hint_generate_gifts">"Чын бүләк идеяләрен алу өчен 'Генерацияләү' төймәсен басыгыз"</string>
+    <string name="title_settings">Көйләүләр</string>
+    <string name="label_account">Аккаунт</string>
+    <string name="label_logged_as">Сез кердегез: %1$s</string>
+    <string name="btn_sign_out">Чыгу</string>
+    <string name="btn_sign_in_google">Google аша керү</string>
+    <string name="label_security">Куркынычсызлык</string>
+    <string name="label_biometric_login">Биометрия аша керү</string>
+    <string name="label_language">Тел (AI һәм интерфейс)</string>
+    <string name="label_theme">Дизайн темасы</string>
+    <string name="theme_light">Якты</string>
+    <string name="theme_dark">Карангы</string>
+    <string name="theme_celebration">Бәйрәмчә</string>
+    <string name="label_default_reminder">Гадәти хәбәр итү</string>
+    <string name="label_remind_before">Вакыйгага кадәр </string>
+    <string name="label_days_before"> көн калганда</string>
+    <string name="label_time">Вакыты: %1$s</string>
+
+    <!-- Enums -->
+    <string name="tone_romantic">Романтик</string>
+    <string name="tone_solemn">Тантаналы</string>
+    <string name="tone_official">Рәсми</string>
+    <string name="tone_humorous">Шаярту</string>
+    <string name="tone_dark_humor">Кара юмор белән</string>
+
+    <string name="type_birthday">Туган көн</string>
+    <string name="type_wedding">Туй</string>
+    <string name="type_anniversary">Юбилей</string>
+    <string name="type_other">Башка</string>
+
+    <string name="group_none">Төркемсез</string>
+    <string name="group_family">Гаилә</string>
+    <string name="group_friends">Дуслар</string>
+    <string name="group_work">Эш</string>
+    <string name="group_important">Мөһим</string>
+</resources>

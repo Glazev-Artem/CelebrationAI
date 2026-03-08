@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">Куттуу болсун!</string>
+
+    <!-- Навигация жана баш сөздөр -->
+    <string name="title_celebrations">Менин окуяларым</string>
+    <string name="title_add_celebration">Окуя кошуу</string>
+    <string name="title_edit_celebration">Окуяны өзгөртүү</string>
+    <string name="title_new_celebration">Жаңы окуя</string>
+
+    <!-- Баскычтар -->
+    <string name="btn_save">Сактоо</string>
+    <string name="btn_copy">Көчүрүү</string>
+    <string name="btn_select">Тандоо</string>
+    <string name="btn_regenerate">Кайра жазуу</string>
+    <string name="btn_cancel">Жокко чыгаруу</string>
+    <string name="btn_done">Даяр</string>
+    <string name="btn_exit">Чыгуу</string>
+    <string name="btn_generate_greeting">Куттуктоо түзүү</string>
+    <string name="btn_gift_ideas">Белек идеялары</string>
+    <string name="btn_import_contacts">Контакттардан импорттоо</string>
+    <string name="btn_backup_settings">Резервдик көчүрмө параметрлери</string>
+
+    <!-- Киргизүү талаалары -->
+    <string name="hint_name">Ысымы</string>
+    <string name="hint_hobby">Хобби (мисалы, балык уулоо, кино)</string>
+    <string name="hint_profession">Кесиби</string>
+    <string name="label_date">Окуя күнү</string>
+    <string name="label_tone">Куттуктоо обону</string>
+    <string name="label_group">Топ</string>
+    <string name="label_type">Окуя түрү:</string>
+    <string name="label_name">Ысымы</string>
+    <string name="label_profession">Кесиби</string>
+    <string name="label_hobby">Хобби</string>
+    <string name="label_notifications">Билдирүү</string>
+    <string name="label_remind_ahead">"Алдын ала эскертүү: %1$s"</string>
+    <string name="label_on_day">майрам күнү</string>
+    <string name="label_days_format">%1$d күн</string>
+
+    <!-- Абалдар жана билдирүүлөр -->
+    <string name="empty_list">Бул жерде азырынча бош. Биринчи окуяны кошуу үчүн + басыңыз!</string>
+    <string name="loading_ai">AI сыйкыры аткарылууда...</string>
+    <string name="error_ai">AI-дан жооп алуу мүмкүн болгон жок</string>
+    <string name="permission_notifications_title">Параметрлер жана резервдик көчүрмө</string>
+    <string name="permission_notifications_desc">Эртең мененки эскертүү убактысын тандаңыз:</string>
+
+    <!-- Резервдик көчүрмө нускамасы -->
+    <string name="backup_title">Маалыматтарды кантип жоготпоо керек?</string>
+    <string name="backup_instruction">"Сиздин маалыматтар Google булутуна автоматтык түрдө сакталат. Бул иштеши үчүн:\n\n1. Телефон параметрлерине өтүңүз.\n2. Google же Резервдик көчүрмө бөлүмүн табыңыз.\n3. Автоматтык жүктөө күйгүзүлгөнүн текшериңиз.\n\nЭми телефонду алмаштырсаңыз, бардык куттуктоолор өзүнөн-өзү калыбына келет!"</string>
+
+    <string name="footer_line1">Тиркемелер дүкөнү</string>
+    <string name="footer_line2">автору Глазьев Артем</string>
+
+    <!-- UI үчүн кошумча саптар -->
+    <string name="label_zodiac">Зодиак белгиси</string>
+    <string name="label_chinese_zodiac">Чыгыш жылы</string>
+    <string name="label_lived">Жашалган</string>
+    <string name="label_fun_facts">Кызыктуу фактылар:</string>
+    <string name="btn_close">Жабу</string>
+    <string name="title_ai_greeting">AI-дан куттуктоо</string>
+    <string name="label_late_greeting">"Мен куттуктоого кечиктим"</string>
+    <string name="btn_think_greeting">Куттуктоо ойлоп тап</string>
+    <string name="label_greeting_archive">Куттуктоолор архиви:</string>
+    <string name="title_gifts_for">%1$s үчүн белектер</string>
+    <string name="label_wishlist">Тилектер тизмеси:</string>
+    <string name="hint_wishlist">Тилектериңизди киргизиңиз...</string>
+    <string name="btn_save_list">Тизмени сактоо</string>
+    <string name="label_saved">Сакталды!</string>
+    <string name="label_ai_ideas">AI идеялары:</string>
+    <string name="btn_generate">Генерациялоо</string>
+    <string name="hint_generate_gifts">"Чыныгы белек идеяларын алуу үчүн 'Генерациялоо' баскычын басыңыз"</string>
+    <string name="title_settings">Параметрлер</string>
+    <string name="label_account">Аккаунт</string>
+    <string name="label_logged_as">Сиз төмөнкүдөй кирдиңиз: %1$s</string>
+    <string name="btn_sign_out">Чыгуу</string>
+    <string name="btn_sign_in_google">Google аркылуу кирүү</string>
+    <string name="label_security">Коопсуздук</string>
+    <string name="label_biometric_login">Биометрия аркылуу кирүү</string>
+    <string name="label_language">Тил (AI жана интерфейс)</string>
+    <string name="label_theme">Дизайн темасы</string>
+    <string name="theme_light">Жарык</string>
+    <string name="theme_dark">Караңгы</string>
+    <string name="theme_celebration">Майрамдык</string>
+    <string name="label_default_reminder">Демейки эскертүү</string>
+    <string name="label_remind_before">Окуяга чейин </string>
+    <string name="label_days_before"> күн калганда</string>
+    <string name="label_time">Убактысы: %1$s</string>
+
+    <!-- Enums -->
+    <string name="tone_romantic">Романтикалык</string>
+    <string name="tone_solemn">Салтанаттуу</string>
+    <string name="tone_official">Расмий</string>
+    <string name="tone_humorous">Тамаша</string>
+    <string name="tone_dark_humor">Кара тамаша менен</string>
+
+    <string name="type_birthday">Туулган күн</string>
+    <string name="type_wedding">Үйлөнүү үлпөтү</string>
+    <string name="type_anniversary">Юбилей</string>
+    <string name="type_other">Башка</string>
+
+    <string name="group_none">Топсуз</string>
+    <string name="group_family">Үй-бүлө</string>
+    <string name="group_friends">Достор</string>
+    <string name="group_work">Жумуш</string>
+    <string name="group_important">Маанилүү</string>
+</resources>
