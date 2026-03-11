@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import com.glazev.celebrationai.BuildConfig
 import com.glazev.celebrationai.R
 import com.glazev.celebrationai.data.*
 import com.glazev.celebrationai.service.AuthManager
@@ -281,20 +282,29 @@ fun CelebrationListScreen(
                                 ) {
                                     Column(Modifier.padding(12.dp)) {
                                         Text(variant.trim(), fontSize = 14.sp)
-                                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                                            TextButton(onClick = { clipboardManager.setText(AnnotatedString(variant.trim())) }) {
-                                                Icon(Icons.Default.ContentCopy, null, Modifier.size(18.dp))
+                                        Row(
+                                            Modifier.fillMaxWidth(), 
+                                            horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End)
+                                        ) {
+                                            TextButton(
+                                                onClick = { clipboardManager.setText(AnnotatedString(variant.trim())) },
+                                                contentPadding = PaddingValues(horizontal = 8.dp)
+                                            ) {
+                                                Icon(Icons.Default.ContentCopy, null, Modifier.size(16.dp))
                                                 Spacer(Modifier.width(4.dp))
-                                                Text(stringResource(R.string.btn_copy))
+                                                Text(stringResource(R.string.btn_copy), fontSize = 12.sp)
                                             }
-                                            TextButton(onClick = {
-                                                viewModel.saveGreeting(currentCelebration, variant.trim())
-                                                clipboardManager.setText(AnnotatedString(variant.trim()))
-                                                showGreetingDialog = false
-                                            }) {
-                                                Icon(Icons.Default.Check, null, Modifier.size(18.dp))
+                                            TextButton(
+                                                onClick = {
+                                                    viewModel.saveGreeting(currentCelebration, variant.trim())
+                                                    clipboardManager.setText(AnnotatedString(variant.trim()))
+                                                    showGreetingDialog = false
+                                                },
+                                                contentPadding = PaddingValues(horizontal = 8.dp)
+                                            ) {
+                                                Icon(Icons.Default.Check, null, Modifier.size(16.dp))
                                                 Spacer(Modifier.width(4.dp))
-                                                Text(stringResource(R.string.btn_select))
+                                                Text(stringResource(R.string.btn_select), fontSize = 12.sp)
                                             }
                                         }
                                     }
@@ -625,7 +635,7 @@ fun CelebrationListScreen(
                     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         Text(stringResource(R.string.footer_line1), fontWeight = FontWeight.Bold)
                         Text(stringResource(R.string.footer_line2))
-                        Text("Версия: 1.3.2")
+                        Text("Версия: ${BuildConfig.VERSION_NAME}")
                         
                         HorizontalDivider()
                         
@@ -644,9 +654,7 @@ fun CelebrationListScreen(
 
                         TextButton(
                             onClick = {
-                                // ЗАМЕНИТЕ ЭТУ ССЫЛКУ ПОСЛЕ ВЫГРУЗКИ НА GITHUB
-                                // Нужно вставить ссылку "Raw" на ваш файл PRIVACY_POLICY.md
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/glazev/CelebrationAI/blob/main/PRIVACY_POLICY.md"))
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/Glazev-Artem/CelebrationAI/refs/heads/master/PRIVACY_POLICY.md"))
                                 context.startActivity(intent)
                             },
                             modifier = Modifier.align(Alignment.CenterHorizontally)
