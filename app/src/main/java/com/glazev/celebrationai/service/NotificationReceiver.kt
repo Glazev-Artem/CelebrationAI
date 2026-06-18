@@ -40,14 +40,14 @@ class NotificationReceiver : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
-                "Напоминания о праздниках",
+                context.getString(R.string.notif_channel_name),
                 NotificationManager.IMPORTANCE_HIGH
             )
             notificationManager.createNotificationChannel(channel)
         }
 
-        val title = if (type == "EVENT") "Сегодня праздник!" else "Скоро праздник!"
-        val text = if (type == "EVENT") "Не забудьте поздравить: $name" else "Через неделю: $name. Пора подумать о подарке!"
+        val title = if (type == "EVENT") context.getString(R.string.notif_title_today) else context.getString(R.string.notif_title_soon)
+        val text = if (type == "EVENT") context.getString(R.string.notif_msg_today, name) else context.getString(R.string.notif_msg_soon, name)
 
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

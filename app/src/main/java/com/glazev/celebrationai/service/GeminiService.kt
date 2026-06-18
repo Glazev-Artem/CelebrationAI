@@ -15,46 +15,35 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.launch
 
 @Serializable
-data class OpenRouterRequest(
-    val model: String,
-    val messages: List<OpenRouterMessage>,
-    val max_tokens: Int = 1500,
-    val temperature: Double = 0.9
+data class BackendPromptRequest(
+    val user_prompt: String,
+    val app_user_id: String,
+    val invoice_id: String? = null,
+    val timestamp: Long,
+    val signature: String
 )
 
 @Serializable
-data class OpenRouterMessage(
-    val role: String,
-    val content: String
+data class BackendResponse(
+    val result: String
 )
 
-@Serializable
-data class OpenRouterResponse(
-    val choices: List<OpenRouterChoice> = emptyList(),
-    val error: OpenRouterError? = null
-)
-
-@Serializable
-data class OpenRouterChoice(
-    val message: OpenRouterMessage
-)
-
-@Serializable
-data class OpenRouterError(
-    val message: String? = null,
-    val code: Int? = null
-)
-
-class GeminiService(private val apiKey: String, private val settings: AppSettings) {
+class GeminiService(private val context: android.content.Context, private val baseUrl: String, private val settings: AppSettings, private val authManager: AuthManager) {
     
     private val TAG = "GeminiService"
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
+    private val API_SECRET = "CelebrationAI_Secure_Salt_2026"
     private val client = OkHttpClient.Builder()
-        .connectTimeout(60, TimeUnit.SECONDS)
-        .readTimeout(60, TimeUnit.SECONDS)
+        .addInterceptor(com.glazev.celebrationai.network.FailoverInterceptor())
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
         .build()
 
     private val AUTO_MODEL = "openrouter/auto"
@@ -97,9 +86,12 @@ class GeminiService(private val apiKey: String, private val settings: AppSetting
             AppLanguage.AV -> "аварский"
         }
         
-        val type = celebration.getEffectiveTypeDisplay()
+        val type = celebration.getEffectiveTypeDisplay(context)
         val prof = if (celebration.profession.isNotBlank()) "Профессия: ${celebration.profession}" else ""
         val hobby = if (celebration.hobby.isNotBlank()) "Хобби: ${celebration.hobby}" else ""
+        
+        val age = celebration.calculateAge()
+        val ageStr = if (age != null) "Возраст: $age" else ""
         
         val apologyContext = if (isApology) "ВАЖНО: Это поздравление с опозданием. Обыграй это максимально унизительно и смешно." else ""
         
@@ -107,7 +99,8 @@ class GeminiService(private val apiKey: String, private val settings: AppSetting
             Напиши 3 РАЗНЫХ варианта развернутого поздравления на языке: $langName.
             Имя человека: ${celebration.name}.
             Событие: $type.
-            Тон: ${celebration.tone.displayName}.
+            Тон: ${context.getString(celebration.tone.displayNameRes)}.
+            $ageStr
             $prof
             $hobby
             $apologyContext
@@ -140,7 +133,7 @@ class GeminiService(private val apiKey: String, private val settings: AppSetting
         val prompt = """
             Предложи 5 РЕАЛИСТИЧНЫХ идей подарков на языке: $langName.
             Человек: ${celebration.name}.
-            Событие: ${celebration.getEffectiveTypeDisplay()}.
+            Событие: ${celebration.getEffectiveTypeDisplay(context)}.
             Профессия: ${celebration.profession}.
             Хобби: ${celebration.hobby}.
             
@@ -201,49 +194,75 @@ class GeminiService(private val apiKey: String, private val settings: AppSetting
     }
 
     private suspend fun callOpenRouter(prompt: String, systemRole: String): String? {
-        Log.d(TAG, ">>> ЗАПРОС К AI")
-        val result = executeRequest(prompt, systemRole, AUTO_MODEL)
-        return result?.trim()
+        Log.d(TAG, ">>> ЗАПРОС К AI БЭКЕНДУ")
+        val fullPrompt = "$systemRole\n\n$prompt"
+        return executeRequest(fullPrompt)
     }
 
-    private suspend fun executeRequest(prompt: String, systemRole: String, modelId: String): String? = suspendCoroutine { continuation ->
-        try {
-            val requestObj = OpenRouterRequest(
-                model = modelId,
-                messages = listOf(
-                    OpenRouterMessage("system", systemRole),
-                    OpenRouterMessage("user", prompt)
-                )
-            )
-            val jsonBody = json.encodeToString(OpenRouterRequest.serializer(), requestObj)
-            val body = jsonBody.toRequestBody("application/json".toMediaType())
-            val request = Request.Builder()
-                .url("https://openrouter.ai/api/v1/chat/completions")
-                .header("Authorization", "Bearer $apiKey")
-                .header("HTTP-Referer", "https://celebrationai.glazev.ru") 
-                .header("X-Title", "CelebrationAI")
-                .post(body)
-                .build()
+    private fun generateSignature(appUserId: String, timestamp: Long): String {
+        val input = "${appUserId}_${timestamp}_${API_SECRET}"
+        val bytes = java.security.MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
 
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    Log.e(TAG, "Ошибка сети: ${e.message}")
-                    continuation.resume(null)
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    val resString = response.body?.string() ?: ""
-                    try {
-                        val parsed = json.decodeFromString(OpenRouterResponse.serializer(), resString)
-                        continuation.resume(parsed.choices.firstOrNull()?.message?.content)
-                    } catch (e: Exception) {
-                        Log.e(TAG, "Ошибка парсинга: ${e.message}")
-                        continuation.resume(null)
+    private suspend fun executeRequest(prompt: String): String? = suspendCoroutine { continuation ->
+        try {
+            val timestamp = System.currentTimeMillis() / 1000
+            val requestObj = BackendPromptRequest(
+                user_prompt = prompt,
+                app_user_id = settings.appUserId,
+                invoice_id = settings.invoiceId,
+                timestamp = timestamp,
+                signature = generateSignature(settings.appUserId, timestamp)
+            )
+            val jsonBody = json.encodeToString(BackendPromptRequest.serializer(), requestObj)
+            val body = jsonBody.toRequestBody("application/json".toMediaType())
+            
+            val requestBuilder = Request.Builder()
+                .url("$baseUrl/api/generate")
+                .post(body)
+
+            // Получаем токен Firebase синхронно внутри корутины нельзя без launch, но мы в suspend функции
+            kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.IO).launch {
+                try {
+                    val tokenResult = authManager.user.value?.getIdToken(false)?.await()
+                    val token = tokenResult?.token
+                    if (token != null) {
+                        requestBuilder.header("Authorization", "Bearer $token")
                     }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Ошибка получения токена: ${e.message}")
                 }
-            })
+                
+                client.newCall(requestBuilder.build()).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        Log.e(TAG, "Ошибка сети: ${e.message}")
+                        if (e is java.net.SocketTimeoutException || e is java.net.UnknownHostException) {
+                            continuation.resumeWithException(Exception("Ошибка сети: проверьте подключение к интернету"))
+                        } else {
+                            continuation.resumeWithException(Exception("Ошибка запроса: ${e.message}"))
+                        }
+                    }
+                    override fun onResponse(call: Call, response: Response) {
+                        val resString = response.body?.string() ?: ""
+                        if (!response.isSuccessful) {
+                            Log.e(TAG, "Ошибка сервера: ${response.code} $resString")
+                            continuation.resumeWithException(Exception("Ошибка сервера: ${response.code} - ${response.message}"))
+                            return
+                        }
+                        try {
+                            val parsed = json.decodeFromString(BackendResponse.serializer(), resString)
+                            continuation.resume(parsed.result)
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Ошибка парсинга: ${e.message}")
+                            continuation.resumeWithException(Exception("Ошибка обработки ответа сервера"))
+                        }
+                    }
+                })
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Общая ошибка: ${e.message}")
-            continuation.resume(null)
+            continuation.resumeWithException(Exception("Внутренняя ошибка: ${e.message}"))
         }
     }
 }

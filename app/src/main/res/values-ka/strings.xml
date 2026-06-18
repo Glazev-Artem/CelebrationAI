@@ -1,63 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">გილოცავთ!</string>
-
-    <!-- ნავიგაცია და სათაურები -->
-    <string name="title_celebrations">ჩემი ღონისძიებები</string>
-    <string name="title_add_celebration">ღონისძიების დამატება</string>
-    <string name="title_edit_celebration">ღონისძიების შეცვლა</string>
-    <string name="title_new_celebration">ახალი ღონისძიება</string>
-
-    <!-- ღილაკები -->
+    <string name="app_name">გილოცავ დაბადების დღეს!</string>
+    <string name="title_celebrations">ჩემი მოვლენები</string>
+    <string name="title_add_celebration">მოვლენის დამატება</string>
+    <string name="title_edit_celebration">მოვლენის რედაქტირება</string>
+    <string name="title_new_celebration">ახალი მოვლენა</string>
+    <string name="title_about">აპლიკაციის შესახებ</string>
+    <string name="about_version">ვერსია 1.1.0</string>
+    <string name="about_catalog">აპლიკაციების მაღაზია</string>
+    <string name="about_contact_dev">დეველოპერთან დაკავშირება</string>
+    <string name="about_contact_dev_desc">კითხვები და მხარდაჭერა</string>
+    <string name="about_order_dev">შეკვეთის განთავსება</string>
+    <string name="about_order_dev_desc">AI-ბოტებისა და აპლიკაციების შექმნა</string>
+    <string name="about_btn_vk">VKontakte</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">წერილის მიწერა</string>
     <string name="btn_save">შენახვა</string>
     <string name="btn_copy">კოპირება</string>
     <string name="btn_select">არჩევა</string>
-    <string name="btn_regenerate">გადაწერა</string>
+    <string name="btn_regenerate">ხელახლა გენერირება</string>
     <string name="btn_cancel">გაუქმება</string>
     <string name="btn_done">მზადაა</string>
     <string name="btn_exit">გასვლა</string>
-    <string name="btn_generate_greeting">მილოცვის შექმნა</string>
+    <string name="btn_generate_greeting">მილოცვის გენერირება</string>
     <string name="btn_gift_ideas">საჩუქრის იდეები</string>
-    <string name="btn_import_contacts">კონტაქტებიდან იმპორტი</string>
+    <string name="btn_import_contacts">კონტაქტების იმპორტი</string>
     <string name="btn_backup_settings">სარეზერვო ასლის პარამეტრები</string>
-
-    <!-- შესაყვანი ველები -->
+    <string name="btn_feedback">გამოხმაურება (VK)</string>
     <string name="hint_name">სახელი</string>
-    <string name="hint_hobby">ჰობი (მაგალითად, თევზაობა, კინო)</string>
+    <string name="hint_hobby">ჰობი (მაგ. თევზაობა, კინო)</string>
     <string name="hint_profession">პროფესია</string>
-    <string name="label_date">ღონისძიების თარიღი</string>
+    <string name="label_date">მოვლენის თარიღი</string>
     <string name="label_tone">მილოცვის ტონი</string>
     <string name="label_group">ჯგუფი</string>
-    <string name="label_type">ღონისძიების ტიპი:</string>
+    <string name="label_type">მოვლენის ტიპი:</string>
     <string name="label_name">სახელი</string>
     <string name="label_profession">პროფესია</string>
     <string name="label_hobby">ჰობი</string>
     <string name="label_notifications">შეტყობინება</string>
-    <string name="label_remind_ahead">"წინასწარ შეხსენება: %1$s"</string>
-    <string name="label_on_day">დღესასწაულის დღეს</string>
+    <string name="label_remind_ahead">წინასწარ შეხსენება: %1$s</string>
+    <string name="label_on_day">მოვლენის დღეს</string>
     <string name="label_days_format">%1$d დღე</string>
-
-    <!-- მდგომარეობები და შეტყობინებები -->
-    <string name="empty_list">აქ ჯერ ცარიელია. დააჭირეთ +-ს პირველი ღონისძიების დასამატებლად!</string>
-    <string name="loading_ai">AI მაგია პროცესშია...</string>
-    <string name="error_ai">AI-სგან პასუხის მიღება ვერ მოხერხდა</string>
+    <string name="empty_list">ჯერ ცარიელია. დააჭირეთ +, რომ დაამატოთ პირველი მოვლენა!</string>
+    <string name="loading_ai">AI-ს მაგია მიმდინარეობს...</string>
+    <string name="error_ai">AI-სგან პასუხი ვერ მივიღეთ</string>
     <string name="permission_notifications_title">პარამეტრები და სარეზერვო ასლი</string>
     <string name="permission_notifications_desc">აირჩიეთ დილის შეხსენების დრო:</string>
-
-    <!-- სარეზერვო ასლის ინსტრუქცია -->
     <string name="backup_title">როგორ არ დავკარგოთ მონაცემები?</string>
-    <string name="backup_instruction">"თქვენი მონაცემები ავტომატურად ინახება Google Cloud-ში. ამისთვის:\n\n1. გადადით ტელეფონის პარამეტრებში.\n2. იპოვეთ Google ან სარეზერვო ასლის განყოფილება.\n3. დარწმუნდით, რომ ავტომატური ატვირთვა ჩართულია.\n\nახლა ტელეფონის შეცვლისას ყველა მილოცვა თავისით აღდგება!"</string>
-
+    <string name="backup_instruction">თქვენი მონაცემები ავტომატურად ინახება Google Cloud-ში. ჩასართავად:\n\n1. შედით ტელეფონის პარამეტრებში.\n2. იპოვეთ "Google" ან "სარეზერვო ასლი".\n3. დარწმუნდით, რომ "ავტო-ჩამოტვირთვა" ჩართულია.\n\nახლა, ტელეფონის შეცვლის შემთხვევაშიც კი, ყველაფერი აღდგება!</string>
     <string name="footer_line1">აპლიკაციების მაღაზია</string>
-    <string name="footer_line2">ავტორი არტიომ გლაზევი</string>
-
-    <!-- დამატებითი სტრიქონები UI-სთვის -->
+    <string name="footer_line2">ავტორი: არტიომ გლაზევი</string>
     <string name="label_zodiac">ზოდიაქოს ნიშანი</string>
     <string name="label_chinese_zodiac">აღმოსავლური წელი</string>
-    <string name="label_lived">ნაცხოვრებია</string>
+    <string name="label_lived">უცხოვრია</string>
     <string name="label_fun_facts">საინტერესო ფაქტები:</string>
     <string name="btn_close">დახურვა</string>
     <string name="title_ai_greeting">მილოცვა AI-სგან</string>
-    <string name="label_late_greeting">"მილოცვა დავაგვიანე"</string>
+    <string name="label_late_greeting">მე დავაგვიანე მილოცვა</string>
     <string name="btn_think_greeting">მოიფიქრე მილოცვა</string>
     <string name="label_greeting_archive">მილოცვების არქივი:</string>
     <string name="title_gifts_for">საჩუქრები %1$s-სთვის</string>
@@ -65,41 +64,129 @@
     <string name="hint_wishlist">შეიყვანეთ სურვილები...</string>
     <string name="btn_save_list">სიის შენახვა</string>
     <string name="label_saved">შენახულია!</string>
-    <string name="label_ai_ideas">იდეები AI-სგან:</string>
+    <string name="label_ai_ideas">AI იდეები:</string>
     <string name="btn_generate">გენერირება</string>
-    <string name="hint_generate_gifts">"დააჭირეთ 'გენერირებას' საჩუქრების რეალისტური იდეების მისაღებად"</string>
+    <string name="hint_generate_gifts">დააჭირეთ \'გენერირებას\' რეალური იდეების მისაღებად</string>
     <string name="title_settings">პარამეტრები</string>
     <string name="label_account">ანგარიში</string>
-    <string name="label_logged_as">თქვენ შესული ხართ როგორც: %1$s</string>
+    <string name="label_logged_as">შესული ხართ, როგორც: %1$s</string>
     <string name="btn_sign_out">გასვლა</string>
-    <string name="btn_sign_in_google">Google-ით შესვლა</string>
+    <string name="btn_sign_in_google">შესვლა Google-ით</string>
     <string name="label_security">უსაფრთხოება</string>
-    <string name="label_biometric_login">ბიომეტრიით შესვლა</string>
+    <string name="label_biometric_login">შესვლა ბიომეტრიით</string>
     <string name="label_language">ენა (AI და ინტერფეისი)</string>
     <string name="label_theme">დიზაინის თემა</string>
-    <string name="theme_light">ნათელი</string>
-    <string name="theme_dark">ბნელი</string>
+    <string name="theme_light">ღია</string>
+    <string name="theme_dark">მუქი</string>
     <string name="theme_celebration">სადღესასწაულო</string>
-    <string name="label_default_reminder">ნაგულისხმე შეხსენება</string>
-    <string name="label_remind_before">ღონისძიებამდე </string>
+    <string name="label_default_reminder">ნაგულისხმევი შეხსენება</string>
+    <string name="label_remind_before">წინასწარ </string>
     <string name="label_days_before"> დღით ადრე</string>
     <string name="label_time">დრო: %1$s</string>
-
-    <!-- Enums -->
+    <string name="label_today">დღეს!</string>
+    <string name="label_years_short">წლის</string>
+    <string name="label_not_born">ჯერ არ დაბადებულა :)</string>
+    <string name="label_days_lived">ნაცხოვრები დღეები: %1$d</string>
+    <string name="label_privacy_policy">კონფიდენციალურობის პოლიტიკა</string>
+    <string name="title_export_db">ბაზის ექსპორტი</string>
+    <string name="desc_export_db">ყველაფრის შენახვა .csv ფაილში</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">სახელი,დაბადების_თარიღი,კატეგორია,ბიუჯეტი,წელი_აქვს</string>
+    <string name="msg_export_success">მონაცემთა ბაზა წარმატებით ექსპორტირდა</string>
+    <string name="msg_export_error">ფაილის ექსპორტის შეცდომა</string>
+    <string name="calendar_total_budget">თვის საერთო ბიუჯეტი:</string>
+    <string name="calendar_category_budget">კატეგორიის ბიუჯეტი:</string>
+    <string name="title_calendar_screen">დღესასწაულების კალენდარი</string>
+    <string name="content_desc_prev_month">წინა თვე</string>
+    <string name="content_desc_next_month">შემდეგი თვე</string>
+    <string name="label_events_on_day">მოვლენები %1$d რიცხვში:</string>
+    <string name="label_no_events_day">ამ დღეს მოვლენები არ არის</string>
+    <string name="paywall_title">მილოცვის გენერირება</string>
+    <string name="paywall_description">AI-ს გამოსაყენებლად საჭიროა Premium გამოწერა ან რეკლამის ყურება.</string>
+    <string name="btn_buy_premium">Premium-ის შეძენა</string>
+    <string name="btn_watch_ad">რეკლამის ყურება</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">გახსნა</string>
+    <string name="app_main_title">С ДР КРЧ!</string>
     <string name="tone_romantic">რომანტიკული</string>
     <string name="tone_solemn">საზეიმო</string>
     <string name="tone_official">ოფიციალური</string>
-    <string name="tone_humorous">ხუმრობითი</string>
-    <string name="tone_dark_humor">შავი იუმორით</string>
-
+    <string name="tone_humorous">იუმორისტული</string>
+    <string name="tone_dark_humor">შავი იუმორი</string>
     <string name="type_birthday">დაბადების დღე</string>
     <string name="type_wedding">ქორწილი</string>
     <string name="type_anniversary">იუბილე</string>
     <string name="type_other">სხვა</string>
-
     <string name="group_none">ჯგუფის გარეშე</string>
     <string name="group_family">ოჯახი</string>
     <string name="group_friends">მეგობრები</string>
     <string name="group_work">სამსახური</string>
     <string name="group_important">მნიშვნელოვანი</string>
+    <string name="zodiac_aries">ვერძი</string>
+    <string name="zodiac_taurus">კურო</string>
+    <string name="zodiac_gemini">ტყუპები</string>
+    <string name="zodiac_cancer">კირჩხიბი</string>
+    <string name="zodiac_leo">ლომი</string>
+    <string name="zodiac_virgo">ქალწული</string>
+    <string name="zodiac_libra">სასწორი</string>
+    <string name="zodiac_scorpio">მორიელი</string>
+    <string name="zodiac_sagittarius">მშვილდოსანი</string>
+    <string name="zodiac_capricorn">თხის რქა</string>
+    <string name="zodiac_aquarius">მერწყული</string>
+    <string name="zodiac_pisces">თევზები</string>
+    <string name="cz_rat">ვირთხა</string>
+    <string name="cz_ox">ხარი</string>
+    <string name="cz_tiger">ვეფხვი</string>
+    <string name="cz_rabbit">კურდღელი</string>
+    <string name="cz_dragon">დრაკონი</string>
+    <string name="cz_snake">გველი</string>
+    <string name="cz_horse">ცხენი</string>
+    <string name="cz_goat">თხა</string>
+    <string name="cz_monkey">მაიმუნი</string>
+    <string name="cz_rooster">მამალი</string>
+    <string name="cz_dog">ძაღლი</string>
+    <string name="cz_pig">ღორი</string>
+    <string name="label_yes">დიახ</string>
+    <string name="label_no">არა</string>
+    <string name="msg_imported">იმპორტირებულია: %1$d</string>
+    <string name="msg_billing_start">RuStore ირთვება...</string>
+    <string name="msg_billing_success">ყიდვა წარმატებულია!</string>
+    <string name="msg_billing_error">RuStore შეცდომა: %1$s</string>
+    <string name="biometric_title">შესვლა %1$s-ში</string>
+    <string name="biometric_subtitle">დაადასტურეთ თქვენი ვინაობა</string>
+    <string name="notif_channel_name">დღესასწაულების შეხსენებები</string>
+    <string name="notif_title_today">დღეს დღესასწაულია!</string>
+    <string name="notif_title_soon">მალე დღესასწაულია!</string>
+    <string name="notif_msg_today">არ დაგავიწყდეთ მიულოცოთ: %1$s</string>
+    <string name="notif_msg_soon">ერთ კვირაში: %1$s. საჩუქარზე ფიქრის დროა!</string>
+    <string name="widget_days_until">%1$d დღეში</string>
+    <string name="msg_no_push_permission">ნებართვის გარეშე push შეტყობინებები არ იმუშავებს</string>
+    <string name="title_notif_permission">შეტყობინებების ნებართვები</string>
+    <string name="desc_notif_permission">დროული შეხსენებებისთვის აპლიკაციას სჭირდება შეტყობინებების გაგზავნისა და ზუსტი მაღვიძარების დაყენების ნებართვა.</string>
+    <string name="btn_understood">გასაგებია</string>
+    <string name="btn_later">მოგვიანებით</string>
+    <string name="msg_signed_in">შესვლა წარმატებულია!</string>
+    <string name="btn_back">უკან</string>
+    <string name="btn_send_email">ელ-ფოსტის გაგზავნა</string>
+    <string name="label_budget_rub">სავარაუდო ბიუჯეტი (რუბ)</string>
+    <string-array name="days_of_week_short">
+        <item>ორ</item>
+        <item>სა</item>
+        <item>ოთ</item>
+        <item>ხუ</item>
+        <item>პა</item>
+        <item>შა</item>
+        <item>კვ</item>
+    </string-array>
+    <string name="desc_calendar">მოვლენების კალენდარი</string>
+    <string name="desc_import">კონტაქტების იმპორტი</string>
+    <string name="desc_settings">პარამეტრები</string>
+    <string name="error_generation">გენერირების შეცდომა</string>
+    <string name="settings_subscription_title">გამოწერა და რეკლამა</string>
+    <string name="settings_premium_active">✅ თქვენ გაქვთ აქტიური Premium გამოწერა. რეკლამა გამორთულია.</string>
+    <string name="settings_premium_inactive">უფასო ვერსია შეიცავს რეკლამას ტექსტების გენერირებისას.</string>
+    <string name="btn_disable_ads">რეკლამის გამორთვა (Premium)</string>
+    <string name="label_turns_age">უსრულდება %1$d</string>
 </resources>

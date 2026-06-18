@@ -1,101 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Баркалла!</string>
-
-    <!-- Навигация ва тахсир -->
-    <string name="title_celebrations">Дир тадбирал</string>
-    <string name="title_add_celebration">Тадбир жубай</string>
-    <string name="title_edit_celebration">Тадбир хисизаби</string>
-    <string name="title_new_celebration">ЦIияб тадбир</string>
-
-    <!-- ТIухьал -->
-    <string name="btn_save">ЦIунизе</string>
+    <string name="app_name">Гьавураб къогун!</string>
+    <string name="title_celebrations">Дир лъугьа-бахъинал</string>
+    <string name="title_add_celebration">ТІаде жубазе</string>
+    <string name="title_edit_celebration">Хисизе</string>
+    <string name="title_new_celebration">ЦІияб лъугьа-бахъин</string>
+    <string name="title_about">Приложениялъул хІакъалъулъ</string>
+    <string name="about_version">Версия 1.1.0</string>
+    <string name="about_catalog">Приложениязул тука</string>
+    <string name="about_contact_dev">Авторгун хурхен</string>
+    <string name="about_contact_dev_desc">Суалал ва кумек</string>
+    <string name="about_order_dev">Гьабизе буюризе</string>
+    <string name="about_order_dev_desc">AI ботал ва приложениял гьаби</string>
+    <string name="about_btn_vk">ВКонтакте</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Кагъат хъвазе</string>
+    <string name="btn_save">ЦІунизе</string>
     <string name="btn_copy">Копия гьабизе</string>
-    <string name="btn_select">Вищизе</string>
-    <string name="btn_regenerate">Хъвазе</string>
-    <string name="btn_cancel">Тезе</string>
-    <string name="btn_done">ХIадур буго</string>
-    <string name="btn_exit">КъватIиве</string>
-    <string name="btn_generate_greeting">Баркала хъвазе</string>
-    <string name="btn_gift_ideas">Сайигъатазул пикраби</string>
-    <string name="btn_import_contacts">Контактздаса импорт</string>
-    <string name="btn_backup_settings">Настройкаби</string>
-
-    <!-- Поля ввода -->
-    <string name="hint_name">ЦIар</string>
-    <string name="hint_hobby">Хобби</string>
-    <string name="hint_profession">Профессия</string>
-    <string name="label_date">Тадбиралде къо</string>
-    <string name="label_tone">Баркалаялъул тон</string>
-    <string name="label_group">Группа</string>
-    <string name="label_type">Тадбиралъул тайпа:</string>
-    <string name="label_name">ЦIар</string>
-    <string name="label_profession">Профессия</string>
+    <string name="btn_select">ТІаса бищизе</string>
+    <string name="btn_regenerate">ЦІидасан гьабизе</string>
+    <string name="btn_cancel">Нахъе гьабизе</string>
+    <string name="btn_done">ХІадур</string>
+    <string name="btn_exit">КъватІибе</string>
+    <string name="btn_generate_greeting">Барки гьабизе</string>
+    <string name="btn_gift_ideas">Сайгъатазул пикраби</string>
+    <string name="btn_import_contacts">Контактаздасан импорт</string>
+    <string name="btn_backup_settings">Резерв копиялъул настройкаби</string>
+    <string name="btn_feedback">Пикру тезе (ВК)</string>
+    <string name="hint_name">ЦІар</string>
+    <string name="hint_hobby">Хобби (масала, ччугІа кквей, кино)</string>
+    <string name="hint_profession">Махщел</string>
+    <string name="label_date">Къо-экен</string>
+    <string name="label_tone">Баркиялъул тон</string>
+    <string name="label_group">Групп</string>
+    <string name="label_type">Тайпа:</string>
+    <string name="label_name">ЦІар</string>
+    <string name="label_profession">Махщел</string>
     <string name="label_hobby">Хобби</string>
-    <string name="label_notifications">Лъазаби</string>
-    <string name="label_remind_ahead">"Цебеккун лъазабизе: %1$s"</string>
-    <string name="label_on_day">къоялъ</string>
+    <string name="label_notifications">Баян гьаби</string>
+    <string name="label_remind_ahead">Цебего ракІалде щвезабизе: %1$s</string>
+    <string name="label_on_day">гьебго къоялъ</string>
     <string name="label_days_format">%1$d къо</string>
-
-    <!-- Состояния -->
-    <string name="empty_list">Гьаниб щибго гьечIо. Тадбир жубазе + тIухьалда тIад кагъе!</string>
-    <string name="loading_ai">AI-ялъ хIалтIи гьабулеб буго...</string>
-    <string name="error_ai">AI-ялъ жаваб кьечIо</string>
-    <string name="permission_notifications_title">Настройкаби</string>
-    <string name="permission_notifications_desc">Лъазабиялъул заман бище:</string>
-
-    <string name="footer_line1">Приложениязул тукен</string>
+    <string name="empty_list">Гьаниб жакъа чІобого буго. ТІоцебесеб лъугьа-бахъин тІаде жубазе + цузе!</string>
+    <string name="loading_ai">AI-ялъул сихІир хІалтІулеб буго...</string>
+    <string name="error_ai">AI-ялдасан жаваб гьечІо</string>
+    <string name="permission_notifications_title">Настройкаби ва резерв</string>
+    <string name="permission_notifications_desc">Радабанисеб ракІалде щвезабиялъул заман тІаса бище:</string>
+    <string name="backup_title">МагІлумат кин тІагІинаболареб?</string>
+    <string name="backup_instruction">Нужер магІлумат автоматияб къагІидаялда Google Cloud-алда цІунула. Биччазе:\n\n1. Телефоналъул настройкабазде рачІа.\n2. "Google" яги "Резерв копия" балагье.\n3. "Авто-загрузка" БИЧЧАН букІин халгьабе.\n\nГьанже телефон хисаниги кинабго тІадбуссуна!</string>
+    <string name="footer_line1">Приложениязул тука</string>
     <string name="footer_line2">автор Глазьев Артем</string>
-
-    <!-- UI -->
     <string name="label_zodiac">Зодиак</string>
-    <string name="label_chinese_zodiac">Бакъбаккул календарь</string>
-    <string name="label_lived">ГIумру гьабун буго</string>
-    <string name="label_fun_facts">Интересниял фактал:</string>
+    <string name="label_chinese_zodiac">Бакъбаккул сон</string>
+    <string name="label_lived">ГІумру гьабуна</string>
+    <string name="label_fun_facts">Интересиял фактал:</string>
     <string name="btn_close">Къазе</string>
-    <string name="title_ai_greeting">AI-ялъул баркала</string>
-    <string name="label_late_greeting">"Дун кватIана баркала кьезе"</string>
-    <string name="btn_think_greeting">Баркала ургъизе</string>
-    <string name="label_greeting_archive">Баркалабазул архив:</string>
-    <string name="title_gifts_for">%1$s-е саигъатал</string>
-    <string name="label_wishlist">Мурадзул список:</string>
-    <string name="hint_wishlist">Мурадал хъвай...</string>
-    <string name="btn_save_list">Список цIунизе</string>
-    <string name="label_saved">ЦIунана!</string>
-    <string name="label_ai_ideas">AI пикраби:</string>
-    <string name="btn_generate">Гьабизе</string>
-    <string name="hint_generate_gifts">"Сайигъатазул пикраби щвезе 'Гьабизе' тIухьалда тIад кагъе"</string>
+    <string name="title_ai_greeting">AI-ялдасан барки</string>
+    <string name="label_late_greeting">Дун баркизе кватІана</string>
+    <string name="btn_think_greeting">Барки ургъе</string>
+    <string name="label_greeting_archive">Баркиязул архив:</string>
+    <string name="title_gifts_for">%1$s сайгъатал</string>
+    <string name="label_wishlist">Мурадазул сияхІ:</string>
+    <string name="hint_wishlist">Мурадал хъвае...</string>
+    <string name="btn_save_list">СияхІ цІунизе</string>
+    <string name="label_saved">ЦІунана!</string>
+    <string name="label_ai_ideas">AI идеяби:</string>
+    <string name="btn_generate">Генерация гьабизе</string>
+    <string name="hint_generate_gifts">Унго-унгоял идеяби щвезе \'Генерация\' цузе</string>
     <string name="title_settings">Настройкаби</string>
     <string name="label_account">Аккаунт</string>
-    <string name="label_logged_as">Дуца квеш гьабун буго: %1$s</string>
-    <string name="btn_sign_out">КъватIиве</string>
-    <string name="btn_sign_in_google">Google-алдасан жубай</string>
-    <string name="label_security">Безопасность</string>
-    <string name="label_biometric_login">Биометрия</string>
-    <string name="label_language">МацI (AI ва интерфейс)</string>
-    <string name="label_theme">Оформление</string>
+    <string name="label_logged_as">Нуж лъугьана гьаб цІаралда: %1$s</string>
+    <string name="btn_sign_out">КъватІибе</string>
+    <string name="btn_sign_in_google">Google-алдасан лъугьине</string>
+    <string name="label_security">ХІинкъибукІунгутІи</string>
+    <string name="label_biometric_login">Биометриялдасан лъугьине</string>
+    <string name="label_language">МацІ (AI ва интерфейс)</string>
+    <string name="label_theme">Дизайн тема</string>
     <string name="theme_light">Гвангъараб</string>
-    <string name="theme_dark">БецIаб</string>
-    <string name="theme_celebration">Праздник</string>
-    <string name="label_default_reminder">Лъазаби</string>
-    <string name="label_remind_before">Цебеккун </string>
-    <string name="label_days_before"> къоялъ</string>
+    <string name="theme_dark">БецІаб</string>
+    <string name="theme_celebration">Байрамалъул</string>
+    <string name="label_default_reminder">Аслияб ракІалде щвезаби</string>
+    <string name="label_remind_before">Цебего </string>
+    <string name="label_days_before"> къоялъ цебе</string>
     <string name="label_time">Заман: %1$s</string>
-
-    <!-- Enums -->
-    <string name="tone_romantic">Романтика</string>
-    <string name="tone_solemn">Торжество</string>
+    <string name="label_today">Жакъа!</string>
+    <string name="label_years_short">сон</string>
+    <string name="label_not_born">Жеги гьавичун :)</string>
+    <string name="label_days_lived">ГІумру гьабурал къоял: %1$d</string>
+    <string name="label_privacy_policy">Конфиденциальносталъул сиясат</string>
+    <string name="title_export_db">База экспорт гьаби</string>
+    <string name="desc_export_db">Кинабго .csv файлялде цІунизе</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">ЦІар,Гьавураб_къо,Категория,Бюджет,Сон_буго</string>
+    <string name="msg_export_success">База лъикІ экспорт гьабуна</string>
+    <string name="msg_export_error">Файл экспорт гьабулаго гъалатІ</string>
+    <string name="calendar_total_budget">МоцІрил кинабниги бюджет:</string>
+    <string name="calendar_category_budget">Категориялъул бюджет:</string>
+    <string name="title_calendar_screen">Байрамазул календарь</string>
+    <string name="content_desc_prev_month">Цебесеб моцІ</string>
+    <string name="content_desc_next_month">Хадусеб моцІ</string>
+    <string name="label_events_on_day">%1$d къоялъ лъугьа-бахъинал:</string>
+    <string name="label_no_events_day">Гьаб къоялъ лъугьа-бахъинал гьечІо</string>
+    <string name="paywall_title">Барки гьаби</string>
+    <string name="paywall_description">AI хІалтІизабизе Premium подписка босизе яги реклама балагьизе ккола.</string>
+    <string name="btn_buy_premium">Premium босизе</string>
+    <string name="btn_watch_ad">Реклама балагьизе</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Рагьизе</string>
+    <string name="app_main_title">С ДР КРЧ!</string>
+    <string name="tone_romantic">Романтикияб</string>
+    <string name="tone_solemn">Тантанаялъул</string>
     <string name="tone_official">Официалияб</string>
-    <string name="tone_humorous">Шутка</string>
-    <string name="tone_dark_humor">ЧIегIераб юмор</string>
-
+    <string name="tone_humorous">Масхараялъул</string>
+    <string name="tone_dark_humor">ЧІегІераб юмор</string>
     <string name="type_birthday">Гьавураб къо</string>
-    <string name="type_wedding">Бакъан</string>
+    <string name="type_wedding">Бергьен</string>
     <string name="type_anniversary">Юбилей</string>
     <string name="type_other">Цогидаб</string>
-
-    <string name="group_none">Группа гьечIо</string>
+    <string name="group_none">Группа гьечІо</string>
     <string name="group_family">Хъизан</string>
-    <string name="group_friends">Гьудулзаби</string>
-    <string name="group_work">ХIалтIи</string>
-    <string name="group_important">Важибияб</string>
+    <string name="group_friends">Гьалмагъал</string>
+    <string name="group_work">ХІалтІи</string>
+    <string name="group_important">КІварбугеб</string>
+    <string name="zodiac_aries">Овен</string>
+    <string name="zodiac_taurus">Телец</string>
+    <string name="zodiac_gemini">Близнецы</string>
+    <string name="zodiac_cancer">Рак</string>
+    <string name="zodiac_leo">Лев</string>
+    <string name="zodiac_virgo">Дева</string>
+    <string name="zodiac_libra">Весы</string>
+    <string name="zodiac_scorpio">Скорпион</string>
+    <string name="zodiac_sagittarius">Стрелец</string>
+    <string name="zodiac_capricorn">Козерог</string>
+    <string name="zodiac_aquarius">Водолей</string>
+    <string name="zodiac_pisces">Рыбы</string>
+    <string name="cz_rat">ГІункІкІ</string>
+    <string name="cz_ox">Оц</string>
+    <string name="cz_tiger">ЦІиркъ</string>
+    <string name="cz_rabbit">ГІанкІ</string>
+    <string name="cz_dragon">Аждагьа</string>
+    <string name="cz_snake">Борхь</string>
+    <string name="cz_horse">Чу</string>
+    <string name="cz_goat">ЦІе</string>
+    <string name="cz_monkey">Маймун</string>
+    <string name="cz_rooster">ХІеко</string>
+    <string name="cz_dog">Гьой</string>
+    <string name="cz_pig">Болън</string>
+    <string name="label_yes">Аа</string>
+    <string name="label_no">Гуро</string>
+    <string name="msg_imported">Импорт гьабуна: %1$d</string>
+    <string name="msg_billing_start">RuStore рагьулеб буго...</string>
+    <string name="msg_billing_success">Боси лъикІ лъугІана!</string>
+    <string name="msg_billing_error">RuStore гъалатІ: %1$s</string>
+    <string name="biometric_title">%1$s лъугьине</string>
+    <string name="biometric_subtitle">Лъугьине нужерго шахсият тасдикъ гьабе</string>
+    <string name="notif_channel_name">Байрамазул ракІалде щвезаби</string>
+    <string name="notif_title_today">Жакъа байрам!</string>
+    <string name="notif_title_soon">НекІо байрам!</string>
+    <string name="notif_msg_today">Баркизе кІочонге: %1$s</string>
+    <string name="notif_msg_soon">Анкьидасан: %1$s. Сайгъаталъул пикру гьабизе заман щвана!</string>
+    <string name="widget_days_until">%1$d къоялдасан</string>
+    <string name="msg_no_push_permission">Ихтияр гьечІого push баянал хІалтІуларо</string>
+    <string name="title_notif_permission">Баяназе ихтияр</string>
+    <string name="desc_notif_permission">РакІалде щвезабизе приложениялъе баянал битІизе ва будильник лъезе ихтияр хІажат буго.</string>
+    <string name="btn_understood">БичІчІана</string>
+    <string name="btn_later">Хадуб</string>
+    <string name="msg_signed_in">Лъугьин лъикІ лъугІана!</string>
+    <string name="btn_back">Нахъе</string>
+    <string name="btn_send_email">Email битІизе</string>
+    <string name="label_budget_rub">Къадар budget (руб)</string>
+    <string-array name="days_of_week_short">
+        <item>Ит</item>
+        <item>Тл</item>
+        <item>Ар</item>
+        <item>Хм</item>
+        <item>Рз</item>
+        <item>Шб</item>
+        <item>Гь</item>
+    </string-array>
+    <string name="desc_calendar">Календарь</string>
+    <string name="desc_import">Контактаздасан импорт</string>
+    <string name="desc_settings">Настройкаби</string>
+    <string name="error_generation">Генерациялъул гъалатІ</string>
+    <string name="settings_subscription_title">Подписка ва реклама</string>
+    <string name="settings_premium_active">✅ Нужер Premium подписка буго. Реклама свинбуна.</string>
+    <string name="settings_premium_inactive">ЧІобогояб версиялда текст генерация гьабулаго реклама буго.</string>
+    <string name="btn_disable_ads">Реклама свинбузе (Premium)</string>
+    <string name="label_turns_age">%1$d сон тІубала</string>
 </resources>

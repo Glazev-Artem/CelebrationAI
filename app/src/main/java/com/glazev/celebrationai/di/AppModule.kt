@@ -18,8 +18,10 @@ val appModule = module {
     single { AuthManager(androidContext()) }
     single { SyncManager(get(), get()) }
     // Теперь используем ключ из BuildConfig, который берется из local.properties
-    single { GeminiService(BuildConfig.OPENROUTER_API_KEY, get()) }
+    single { GeminiService(androidContext(), BuildConfig.BACKEND_URL, get(), get()) }
     single { NotificationHelper(androidContext()) }
     single { BiometricHelper(androidContext()) }
+    single { YandexAdManager(androidContext()) }
+    single<BillingManager> { RuStoreBillingManagerImpl(androidContext()) }
     viewModel { CelebrationViewModel(androidApplication(), get(), get(), get(), get()) }
 }

@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.animateColorAsState
@@ -20,7 +21,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Chat
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -57,13 +60,23 @@ fun CelebrationListScreen(
     appSettings: AppSettings,
     onAddClick: () -> Unit,
     onEditClick: (Celebration) -> Unit,
+    onCalendarClick: () -> Unit,
+    onAboutClick: () -> Unit,
     onGoogleSignInClick: () -> Unit,
     onThemeUpdated: (AppTheme) -> Unit,
     onLanguageUpdated: (AppLanguage) -> Unit
 ) {
     val celebrations by viewModel.allCelebrations.collectAsState()
     val context = LocalContext.current
+    val activity = context as? android.app.Activity
     val scope = rememberCoroutineScope()
+    val adManager: com.glazev.celebrationai.service.YandexAdManager = org.koin.compose.koinInject()
+    val billingManager: com.glazev.celebrationai.service.BillingManager = org.koin.compose.koinInject()
+    val isSubscribed by billingManager.isSubscribed.collectAsState()
+    
+    LaunchedEffect(isSubscribed) { appSettings.isSubscribed = isSubscribed }
+    LaunchedEffect(Unit) { billingManager.initialize() }
+    
     val clipboardManager = LocalClipboardManager.current
     val user by authManager.user.collectAsState()
     
@@ -78,6 +91,8 @@ fun CelebrationListScreen(
     var generatedGreeting by remember { mutableStateOf<String?>(null) }
     var isApology by remember { mutableStateOf(false) }
     
+    var showPaywallDialog by remember { mutableStateOf(false) }
+    var pendingAiAction by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showGiftIdeasDialog by remember { mutableStateOf(false) }
     var giftIdeasText by remember { mutableStateOf<String?>(null) }
     var wishlistText by remember { mutableStateOf("") }
@@ -109,36 +124,54 @@ fun CelebrationListScreen(
         if (isGranted) viewModel.importFromContacts()
     }
 
-    val backgroundBrush = Brush.verticalGradient(
-        colors = when (appSettings.selectedTheme) {
-            AppTheme.DARK -> listOf(DarkGradientStart, DarkGradientEnd)
-            AppTheme.LIGHT -> listOf(LightGradientStart, LightGradientEnd)
-            AppTheme.CELEBRATION -> listOf(CelebrationGradientStart, CelebrationGradientEnd)
+    val exportLauncher = rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.CreateDocument("text/csv")) { uri ->
+        if (uri != null) {
+            viewModel.exportDatabaseToCsv(uri, context) { success ->
+                val msgId = if (success) R.string.msg_export_success else R.string.msg_export_error
+                Toast.makeText(context, msgId, Toast.LENGTH_SHORT).show()
+            }
         }
-    )
+    }
+
+    val backgroundBrush = if (appSettings.selectedTheme == AppTheme.CELEBRATION) {
+        Brush.verticalGradient(listOf(CelebrationGradientStart, CelebrationGradientEnd))
+    } else {
+        androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.background)
+    }
 
     Scaffold(
         topBar = {
             Column(Modifier.background(Color.Transparent)) {
-                CenterAlignedTopAppBar(
-                    title = { Text(stringResource(R.string.app_name), fontWeight = FontWeight.ExtraBold, color = MaterialTheme.colorScheme.primary) },
+                TopAppBar(
+                    title = {
+                        Text(
+                            text = stringResource(id = R.string.app_main_title),
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontWeight = FontWeight.Bold
+                            ),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    },
                     actions = {
+                        IconButton(onClick = onCalendarClick) {
+                            Icon(Icons.Default.DateRange, contentDescription = stringResource(R.string.desc_calendar))
+                        }
                         IconButton(onClick = {
                             if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) viewModel.importFromContacts()
                             else permissionLauncher.launch(Manifest.permission.READ_CONTACTS)
-                        }) { Icon(Icons.Default.ContactPage, null) }
+                        }) { Icon(Icons.Default.ContactPage, contentDescription = stringResource(R.string.desc_import)) }
                         IconButton(onClick = { 
                             tempSelectedTheme = appSettings.selectedTheme
                             tempSelectedLanguage = appSettings.selectedLanguage
                             tempIsBiometricEnabled = appSettings.isBiometricEnabled
                             tempDefaultReminderDays = appSettings.defaultReminderDaysBefore
                             showSettingsDialog = true 
-                        }) { Icon(Icons.Default.Settings, null) }
-                        IconButton(onClick = { showDeveloperInfoDialog = true }) { 
+                        }) { Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.desc_settings)) }
+                        IconButton(onClick = onAboutClick) { 
                             Icon(Icons.Default.Info, contentDescription = "Info") 
                         }
                     },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.Transparent)
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
                 )
                 OutlinedTextField(
                     value = searchQuery,
@@ -205,12 +238,22 @@ fun CelebrationListScreen(
                                 selectedCelebrationId = item.id
                                 if (item.funFacts != null) { funFactsText = item.funFacts; showInfoDialog = true }
                                 else {
-                                    scope.launch {
-                                        funFactsText = context.getString(R.string.loading_ai); showInfoDialog = true
-                                        val facts = viewModel.generateFunFacts(item)
-                                        funFactsText = facts ?: context.getString(R.string.error_ai)
-                                        if (facts != null) viewModel.updateCelebration(item.copy(funFacts = facts))
+                                    val performGen = {
+                                        scope.launch {
+                                            try {
+                                                funFactsText = context.getString(R.string.loading_ai); showInfoDialog = true
+                                                val facts = viewModel.generateFunFacts(item)
+                                                funFactsText = facts ?: context.getString(R.string.error_ai)
+                                                if (facts != null) viewModel.updateCelebration(item.copy(funFacts = facts))
+                                            } catch (e: Exception) {
+                                                funFactsText = context.getString(R.string.error_ai)
+                                                android.widget.Toast.makeText(context, e.message ?: context.getString(R.string.error_generation), android.widget.Toast.LENGTH_LONG).show()
+                                            }
+                                        }
+                                        Unit
                                     }
+                                    if (appSettings.isSubscribed || activity == null) performGen()
+                                    else { pendingAiAction = performGen; showPaywallDialog = true }
                                 }
                             },
                             onGenerate = {
@@ -262,11 +305,21 @@ fun CelebrationListScreen(
                         }
 
                         Button(onClick = {
-                            scope.launch {
-                                generatedGreeting = context.getString(R.string.loading_ai)
-                                val greeting = viewModel.generateAiGreeting(currentCelebration, isApology)
-                                generatedGreeting = greeting ?: context.getString(R.string.error_ai)
+                            val performGen = {
+                                scope.launch {
+                                    try {
+                                        generatedGreeting = context.getString(R.string.loading_ai)
+                                        val greeting = viewModel.generateAiGreeting(currentCelebration, isApology)
+                                        generatedGreeting = greeting ?: context.getString(R.string.error_ai)
+                                    } catch (e: Exception) {
+                                        generatedGreeting = context.getString(R.string.error_ai)
+                                        android.widget.Toast.makeText(context, e.message ?: context.getString(R.string.error_generation), android.widget.Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                                Unit
                             }
+                            if (appSettings.isSubscribed || activity == null) performGen()
+                            else { pendingAiAction = performGen; showPaywallDialog = true }
                         }, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.btn_think_greeting)) }
 
                         if (generatedGreeting == context.getString(R.string.loading_ai)) {
@@ -278,7 +331,8 @@ fun CelebrationListScreen(
                             variants.forEach { variant ->
                                 Card(
                                     modifier = Modifier.fillMaxWidth(),
-                                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                                    shape = RoundedCornerShape(16.dp),
+                                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                                 ) {
                                     Column(Modifier.padding(12.dp)) {
                                         Text(variant.trim(), fontSize = 14.sp)
@@ -326,7 +380,8 @@ fun CelebrationListScreen(
                                                 .fillMaxWidth()
                                                 .padding(vertical = 4.dp)
                                                 .clickable { isExpanded = !isExpanded },
-                                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
+                                            shape = RoundedCornerShape(16.dp),
+                                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                                         ) {
                                             Column(Modifier.padding(8.dp)) {
                                                 Row(
@@ -400,7 +455,7 @@ fun CelebrationListScreen(
                                     val isOzon = url.contains("ozon.ru")
                                     AssistChip(
                                         onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) },
-                                        label = { Text(if (isWb) "WB" else if (isOzon) "Ozon" else "Открыть", maxLines = 1) },
+                                        label = { Text(if (isWb) stringResource(R.string.chip_wb) else if (isOzon) stringResource(R.string.chip_ozon) else stringResource(R.string.chip_open), maxLines = 1) },
                                         leadingIcon = {
                                             Icon(
                                                 if (isWb) Icons.Default.ShoppingBag else if (isOzon) Icons.Default.ShoppingCart else Icons.Default.Link,
@@ -444,12 +499,22 @@ fun CelebrationListScreen(
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                             Text(stringResource(R.string.label_ai_ideas), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
                             Button(onClick = {
-                                scope.launch {
-                                    giftIdeasText = context.getString(R.string.loading_ai)
-                                    val ideas = viewModel.generateGiftIdeas(currentCelebration)
-                                    giftIdeasText = ideas ?: context.getString(R.string.error_ai)
-                                    if (ideas != null) viewModel.updateCelebration(currentCelebration.copy(giftIdeas = ideas))
+                                val performGen = {
+                                    scope.launch {
+                                        try {
+                                            giftIdeasText = context.getString(R.string.loading_ai)
+                                            val ideas = viewModel.generateGiftIdeas(currentCelebration)
+                                            giftIdeasText = ideas ?: context.getString(R.string.error_ai)
+                                            if (ideas != null) viewModel.updateCelebration(currentCelebration.copy(giftIdeas = ideas))
+                                        } catch (e: Exception) {
+                                            giftIdeasText = context.getString(R.string.error_ai)
+                                            android.widget.Toast.makeText(context, e.message ?: context.getString(R.string.error_generation), android.widget.Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+                                    Unit
                                 }
+                                if (appSettings.isSubscribed || activity == null) performGen()
+                                else { pendingAiAction = performGen; showPaywallDialog = true }
                             }) { Text(stringResource(R.string.btn_generate)) }
                         }
                         
@@ -476,7 +541,7 @@ fun CelebrationListScreen(
                                                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.avito.ru/rossiya?q=$searchQuery"))
                                                                 context.startActivity(intent)
                                                             },
-                                                            label = { Text("Avito", fontSize = 10.sp) },
+                                                            label = { Text(stringResource(R.string.chip_avito), fontSize = 10.sp) },
                                                             leadingIcon = { Icon(Icons.Default.LocationOn, null, modifier = Modifier.size(14.dp), tint = Color(0xFF00AAFF)) }
                                                         )
                                                     } else {
@@ -486,7 +551,7 @@ fun CelebrationListScreen(
                                                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.wildberries.ru/catalog/0/search.aspx?search=$searchQuery"))
                                                                 context.startActivity(intent)
                                                             },
-                                                            label = { Text("WB", fontSize = 10.sp) },
+                                                            label = { Text(stringResource(R.string.chip_wb), fontSize = 10.sp) },
                                                             leadingIcon = { Icon(Icons.Default.ShoppingBag, null, modifier = Modifier.size(14.dp), tint = Color(0xFF9C27B0)) }
                                                         )
                                                         AssistChip(
@@ -494,7 +559,7 @@ fun CelebrationListScreen(
                                                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ozon.ru/search/?text=$searchQuery"))
                                                                 context.startActivity(intent)
                                                             },
-                                                            label = { Text("Ozon", fontSize = 10.sp) },
+                                                            label = { Text(stringResource(R.string.chip_ozon), fontSize = 10.sp) },
                                                             leadingIcon = { Icon(Icons.Default.ShoppingCart, null, modifier = Modifier.size(14.dp), tint = Color(0xFF005BFF)) }
                                                         )
                                                     }
@@ -536,6 +601,55 @@ fun CelebrationListScreen(
                                 Icon(Icons.Default.AccountCircle, null)
                                 Spacer(Modifier.width(8.dp))
                                 Text(stringResource(R.string.btn_sign_in_google))
+                            }
+                        }
+
+                        HorizontalDivider()
+
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.weight(1f).padding(vertical = 8.dp)) {
+                                Text(stringResource(R.string.title_export_db), fontWeight = FontWeight.Bold)
+                                Text(stringResource(R.string.desc_export_db), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                            Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+                                Surface(
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .clickable { 
+                                            viewModel.shareDatabaseAsCsv(context) { uri ->
+                                                if (uri != null) {
+                                                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                                                        type = "text/csv"
+                                                        putExtra(Intent.EXTRA_STREAM, uri)
+                                                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                                    }
+                                                    context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.title_export_db)))
+                                                } else {
+                                                    Toast.makeText(context, R.string.msg_export_error, Toast.LENGTH_SHORT).show()
+                                                }
+                                            }
+                                        },
+                                    shape = CircleShape,
+                                    color = MaterialTheme.colorScheme.primaryContainer
+                                ) {
+                                    Icon(Icons.Default.Share, contentDescription = "Share")
+                                }
+                            }
+                        }
+
+                        HorizontalDivider()
+
+                        Text(stringResource(R.string.settings_subscription_title), fontWeight = FontWeight.Bold)
+                        if (isSubscribed) {
+                            Text(stringResource(R.string.settings_premium_active), color = Color(0xFF4CAF50), style = MaterialTheme.typography.bodyMedium)
+                        } else {
+                            Text(stringResource(R.string.settings_premium_inactive), style = MaterialTheme.typography.bodyMedium)
+                            Button(
+                                onClick = { activity?.let { billingManager.purchaseSubscription(it, "premium_sub") } },
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                            ) {
+                                Text(stringResource(R.string.btn_disable_ads))
                             }
                         }
 
@@ -627,45 +741,43 @@ fun CelebrationListScreen(
             )
         }
 
-        if (showDeveloperInfoDialog) {
-            AlertDialog(
-                onDismissRequest = { showDeveloperInfoDialog = false },
-                title = { Text(stringResource(R.string.title_about)) },
-                text = {
-                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Text(stringResource(R.string.footer_line1), fontWeight = FontWeight.Bold)
-                        Text(stringResource(R.string.footer_line2))
-                        Text("Версия: ${BuildConfig.VERSION_NAME}")
-                        
-                        HorizontalDivider()
-                        
-                        Button(
-                            onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/lavka_apps"))
-                                context.startActivity(intent)
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0077FF))
-                        ) {
-                            Icon(Icons.Default.OpenInNew, null)
-                            Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.btn_feedback))
-                        }
 
-                        TextButton(
-                            onClick = {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/Glazev-Artem/CelebrationAI/refs/heads/master/PRIVACY_POLICY.md"))
-                                context.startActivity(intent)
-                            },
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        ) {
-                            Text(stringResource(R.string.label_privacy_policy), fontSize = 12.sp, color = MaterialTheme.colorScheme.primary)
-                        }
-                    }
+
+        if (showPaywallDialog) {
+            AlertDialog(
+                onDismissRequest = { showPaywallDialog = false },
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.paywall_title),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                },
+                text = {
+                    Text(
+                        text = stringResource(id = R.string.paywall_description),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
                 },
                 confirmButton = {
-                    TextButton(onClick = { showDeveloperInfoDialog = false }) {
-                        Text(stringResource(R.string.btn_close))
+                    Button(
+                        onClick = {
+                            showPaywallDialog = false
+                            activity?.let { billingManager.purchaseSubscription(it, "premium_sub") }
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                    ) {
+                        Text(text = stringResource(id = R.string.btn_buy_premium))
+                    }
+                },
+                dismissButton = {
+                    OutlinedButton(onClick = {
+                        showPaywallDialog = false
+                        if (activity != null && pendingAiAction != null) {
+                            adManager.showRewardedAd(activity, onRewarded = { pendingAiAction?.invoke() }, onFailed = { pendingAiAction?.invoke() })
+                        }
+                    }) {
+                        Text(text = stringResource(id = R.string.btn_watch_ad))
                     }
                 }
             )
@@ -691,8 +803,8 @@ fun CelebrationItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f))
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -720,7 +832,7 @@ fun CelebrationItem(
                         text = celebration.name,
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = if (isDark) Color.White else MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
                         text = if (celebration.type == CelebrationType.OTHER && celebration.customType.isNotBlank()) {
@@ -746,7 +858,10 @@ fun CelebrationItem(
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (celebration.type == CelebrationType.BIRTHDAY) {
-                        Text("${celebration.calculateAge()} " + stringResource(R.string.label_years_short), style = MaterialTheme.typography.bodySmall)
+                        if (celebration.hasYear) {
+                            val age = celebration.calculateAge() ?: 0
+                            Text(stringResource(R.string.label_turns_age, age) + " " + stringResource(R.string.label_years_short), style = MaterialTheme.typography.bodySmall)
+                        }
                     }
                 }
             }
@@ -756,53 +871,41 @@ fun CelebrationItem(
             Spacer(Modifier.height(8.dp))
             
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                // Инфо (Сиреневая лампочка)
-                FilledIconButton(
-                    onClick = onInfo,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = if (hasInfo) Color(0xFFE1BEE7) else Color(0xFFE1F5FE),
-                        contentColor = if (hasInfo) Color(0xFF9C27B0) else Color(0xFF0288D1)
-                    ),
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(Icons.Default.Lightbulb, null)
-                }
+                // Инфо (Идея)
+                PremiumIconButton(
+                    icon = Icons.Rounded.Lightbulb,
+                    isActive = hasInfo,
+                    activeTint = Color(0xFFFFB74D), // Soft Amber
+                    isDark = isDark,
+                    onClick = onInfo
+                )
 
-                // Поздравление (Зеленый чат)
-                FilledIconButton(
-                    onClick = onGenerate,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = if (hasGreeting) Color(0xFFC8E6C9) else Color(0xFFE1F5FE),
-                        contentColor = if (hasGreeting) Color(0xFF2E7D32) else Color(0xFF0288D1)
-                    ),
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(Icons.AutoMirrored.Filled.Chat, null)
-                }
+                // Текст (Поздравление)
+                PremiumIconButton(
+                    icon = Icons.Rounded.Chat,
+                    isActive = hasGreeting,
+                    activeTint = Color(0xFFBA68C8), // Soft Violet
+                    isDark = isDark,
+                    onClick = onGenerate
+                )
 
-                // Подарки (Хохлома: красный + золото)
-                FilledIconButton(
-                    onClick = onViewGifts,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = if (hasGifts) Color(0xFFD32F2F) else Color(0xFFE1F5FE),
-                        contentColor = if (hasGifts) Color(0xFFFFD700) else Color(0xFF0288D1)
-                    ),
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(Icons.Default.CardGiftcard, null)
-                }
+                // Подарки
+                PremiumIconButton(
+                    icon = Icons.Rounded.CardGiftcard,
+                    isActive = hasGifts,
+                    activeTint = Color(0xFFFF8A65), // Soft Coral
+                    isDark = isDark,
+                    onClick = onViewGifts
+                )
 
-                // Удаление
-                FilledIconButton(
-                    onClick = onDelete,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = Color(0xFFF5F5F5),
-                        contentColor = MaterialTheme.colorScheme.error
-                    ),
-                    modifier = Modifier.size(48.dp)
-                ) {
-                    Icon(Icons.Default.DeleteOutline, null)
-                }
+                // Удалить
+                PremiumIconButton(
+                    icon = Icons.Rounded.Delete,
+                    isActive = true,
+                    activeTint = Color(0xFFE57373), // Soft Red
+                    isDark = isDark,
+                    onClick = onDelete
+                )
             }
         }
     }
@@ -859,4 +962,36 @@ class ConfettiParticle {
         Random.nextInt(256),
         Random.nextInt(256)
     )
+}
+
+@Composable
+fun PremiumIconButton(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    isActive: Boolean,
+    activeTint: Color,
+    isDark: Boolean,
+    onClick: () -> Unit
+) {
+    val tintColor by animateColorAsState(
+        targetValue = if (isActive) activeTint else if (isDark) Color.White.copy(alpha = 0.3f) else Color.Gray.copy(alpha = 0.5f),
+        label = "iconTint"
+    )
+    
+    Surface(
+        modifier = Modifier
+            .size(48.dp)
+            .clickable(onClick = onClick),
+        shape = CircleShape,
+        color = if (isDark) Color.White.copy(alpha = 0.1f) else Color.White.copy(alpha = 0.6f),
+        shadowElevation = 0.dp
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = tintColor,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+    }
 }

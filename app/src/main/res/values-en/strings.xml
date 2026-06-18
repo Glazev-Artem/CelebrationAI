@@ -1,30 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HBD BRO!</string>
-
-    <!-- Navigation and Titles -->
+    <string name="app_name">Happy B-Day!</string>
     <string name="title_celebrations">My Events</string>
     <string name="title_add_celebration">Add Event</string>
     <string name="title_edit_celebration">Edit Event</string>
     <string name="title_new_celebration">New Event</string>
     <string name="title_about">About App</string>
-
-    <!-- Buttons -->
+    <string name="about_version">Version 1.1.0</string>
+    <string name="about_catalog">App Store</string>
+    <string name="about_contact_dev">Contact Developer</string>
+    <string name="about_contact_dev_desc">Questions and Support</string>
+    <string name="about_order_dev">Order Development</string>
+    <string name="about_order_dev_desc">AI Bots &amp; Mobile Apps Creation</string>
+    <string name="about_btn_vk">VKontakte</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Write an Email</string>
     <string name="btn_save">Save</string>
     <string name="btn_copy">Copy</string>
     <string name="btn_select">Select</string>
-    <string name="btn_regenerate">Rewrite</string>
+    <string name="btn_regenerate">Regenerate</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_done">Done</string>
     <string name="btn_exit">Exit</string>
-    <string name="btn_generate_greeting">Create Greeting</string>
+    <string name="btn_generate_greeting">Generate Greeting</string>
     <string name="btn_gift_ideas">Gift Ideas</string>
-    <string name="btn_import_contacts">Import from Contacts</string>
+    <string name="btn_import_contacts">Import Contacts</string>
     <string name="btn_backup_settings">Backup Settings</string>
-    <string name="btn_feedback">Contact Developer</string>
-
-    <!-- Input Fields -->
+    <string name="btn_feedback">Feedback (VK)</string>
     <string name="hint_name">Name</string>
-    <string name="hint_hobby">Hobby (e.g., fishing, cinema)</string>
+    <string name="hint_hobby">Hobby (e.g., fishing, movies)</string>
     <string name="hint_profession">Profession</string>
     <string name="label_date">Event Date</string>
     <string name="label_tone">Greeting Tone</string>
@@ -34,42 +38,35 @@
     <string name="label_profession">Profession</string>
     <string name="label_hobby">Hobby</string>
     <string name="label_notifications">Notification</string>
-    <string name="label_remind_ahead">"Remind in advance: %1$s"</string>
-    <string name="label_on_day">on the day of the holiday</string>
+    <string name="label_remind_ahead">Remind ahead: %1$s</string>
+    <string name="label_on_day">on the day</string>
     <string name="label_days_format">%1$d days</string>
-
-    <!-- States and Notifications -->
-    <string name="empty_list">"It's empty here. Press + to add your first event!"</string>
-    <string name="loading_ai">AI magic in progress...</string>
+    <string name="empty_list">It\'s empty here. Tap + to add your first event!</string>
+    <string name="loading_ai">AI Magic in progress...</string>
     <string name="error_ai">Failed to get response from AI</string>
     <string name="permission_notifications_title">Settings &amp; Backup</string>
-    <string name="permission_notifications_desc">Choose time for morning reminder:</string>
-
-    <!-- Backup Instruction -->
+    <string name="permission_notifications_desc">Select time for morning reminder:</string>
     <string name="backup_title">How to not lose data?</string>
-    <string name="backup_instruction">"Your data is saved to Google Cloud automatically. To make it work:\n\n1. Go to phone settings.\n2. Find Google or Backup.\n3. Make sure Back up by Google One is on.\n\nNow if you change your phone, all greetings will restore themselves!"</string>
-
-    <string name="footer_line1">App Shop</string>
+    <string name="backup_instruction">Your data is automatically saved to Google Cloud. To enable this:\n\n1. Go to phone settings.\n2. Find "Google" or "Backup".\n3. Make sure "Auto backup" is ON.\n\nNow, if you change phones, all your events will be restored!</string>
+    <string name="footer_line1">App Store</string>
     <string name="footer_line2">by Artem Glazev</string>
-
-    <!-- Added strings for UI -->
     <string name="label_zodiac">Zodiac Sign</string>
     <string name="label_chinese_zodiac">Chinese Zodiac</string>
     <string name="label_lived">Lived</string>
-    <string name="label_fun_facts">Interesting Facts:</string>
+    <string name="label_fun_facts">Fun Facts:</string>
     <string name="btn_close">Close</string>
     <string name="title_ai_greeting">AI Greeting</string>
-    <string name="label_late_greeting">"I'm late with the greeting"</string>
-    <string name="btn_think_greeting">Generate Greeting</string>
+    <string name="label_late_greeting">I\'m late with greeting</string>
+    <string name="btn_think_greeting">Think of greeting</string>
     <string name="label_greeting_archive">Greeting Archive:</string>
     <string name="title_gifts_for">Gifts for %1$s</string>
     <string name="label_wishlist">Wishlist:</string>
     <string name="hint_wishlist">Enter wishes...</string>
-    <string name="btn_save_list">Save list</string>
+    <string name="btn_save_list">Save List</string>
     <string name="label_saved">Saved!</string>
     <string name="label_ai_ideas">AI Ideas:</string>
     <string name="btn_generate">Generate</string>
-    <string name="hint_generate_gifts">"Click 'Generate' to get realistic gift ideas"</string>
+    <string name="hint_generate_gifts">Tap \'Generate\' to get realistic gift ideas</string>
     <string name="title_settings">Settings</string>
     <string name="label_account">Account</string>
     <string name="label_logged_as">Logged in as: %1$s</string>
@@ -84,32 +81,49 @@
     <string name="theme_celebration">Celebration</string>
     <string name="label_default_reminder">Default Reminder</string>
     <string name="label_remind_before">Remind </string>
-    <string name="label_days_before"> days before event</string>
+    <string name="label_days_before"> days before</string>
     <string name="label_time">Time: %1$s</string>
     <string name="label_today">Today!</string>
-    <string name="label_years_short">years</string>
+    <string name="label_years_short">yrs</string>
     <string name="label_not_born">Not born yet :)</string>
     <string name="label_days_lived">Days lived: %1$d</string>
-
-    <!-- Enums -->
+    <string name="label_privacy_policy">Privacy Policy</string>
+    <string name="title_export_db">Export Database</string>
+    <string name="desc_export_db">Save all events to a .csv file</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">Name,Birth_Date,Category,Budget,Has_Year</string>
+    <string name="msg_export_success">Database exported successfully</string>
+    <string name="msg_export_error">File export error</string>
+    <string name="calendar_total_budget">Total budget for month:</string>
+    <string name="calendar_category_budget">Category budget:</string>
+    <string name="title_calendar_screen">Holiday Calendar</string>
+    <string name="content_desc_prev_month">Prev month</string>
+    <string name="content_desc_next_month">Next month</string>
+    <string name="label_events_on_day">Events on %1$d:</string>
+    <string name="label_no_events_day">No events on this day</string>
+    <string name="paywall_title">Greeting Generation</string>
+    <string name="paywall_description">To use AI you need to purchase a Premium subscription or watch one ad.</string>
+    <string name="btn_buy_premium">Buy Premium</string>
+    <string name="btn_watch_ad">Watch Ad</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Open</string>
+    <string name="app_main_title">Happy B-Day!</string>
     <string name="tone_romantic">Romantic</string>
     <string name="tone_solemn">Solemn</string>
     <string name="tone_official">Official</string>
     <string name="tone_humorous">Humorous</string>
     <string name="tone_dark_humor">Dark Humor</string>
-
     <string name="type_birthday">Birthday</string>
     <string name="type_wedding">Wedding</string>
     <string name="type_anniversary">Anniversary</string>
     <string name="type_other">Other</string>
-
-    <string name="group_none">No group</string>
+    <string name="group_none">No Group</string>
     <string name="group_family">Family</string>
     <string name="group_friends">Friends</string>
     <string name="group_work">Work</string>
     <string name="group_important">Important</string>
-
-    <!-- Zodiac -->
     <string name="zodiac_aries">Aries</string>
     <string name="zodiac_taurus">Taurus</string>
     <string name="zodiac_gemini">Gemini</string>
@@ -122,8 +136,6 @@
     <string name="zodiac_capricorn">Capricorn</string>
     <string name="zodiac_aquarius">Aquarius</string>
     <string name="zodiac_pisces">Pisces</string>
-
-    <!-- Chinese Zodiac -->
     <string name="cz_rat">Rat</string>
     <string name="cz_ox">Ox</string>
     <string name="cz_tiger">Tiger</string>
@@ -136,4 +148,45 @@
     <string name="cz_rooster">Rooster</string>
     <string name="cz_dog">Dog</string>
     <string name="cz_pig">Pig</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="msg_imported">Imported: %1$d</string>
+    <string name="msg_billing_start">Launching RuStore...</string>
+    <string name="msg_billing_success">Purchase successful!</string>
+    <string name="msg_billing_error">RuStore Error: %1$s</string>
+    <string name="biometric_title">Sign in to %1$s</string>
+    <string name="biometric_subtitle">Verify your identity to log in</string>
+    <string name="notif_channel_name">Holiday Reminders</string>
+    <string name="notif_title_today">Holiday Today!</string>
+    <string name="notif_title_soon">Holiday Soon!</string>
+    <string name="notif_msg_today">Don\'t forget to congratulate: %1$s</string>
+    <string name="notif_msg_soon">In a week: %1$s. Time to think about a gift!</string>
+    <string name="widget_days_until">In %1$d days</string>
+    <string name="msg_no_push_permission">Without permission, push notifications will not work</string>
+    <string name="title_notif_permission">Notification Permissions</string>
+    <string name="desc_notif_permission">For timely birthday reminders, the app needs permission to send notifications and set exact alarms.</string>
+    <string name="btn_understood">Understood</string>
+    <string name="btn_later">Later</string>
+    <string name="msg_signed_in">Signed in!</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_send_email">Send Email</string>
+    <string name="label_budget_rub">Estimated budget (rub)</string>
+    <string-array name="days_of_week_short">
+        <item>Mo</item>
+        <item>Tu</item>
+        <item>We</item>
+        <item>Th</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>Su</item>
+    </string-array>
+    <string name="desc_calendar">Event Calendar</string>
+    <string name="desc_import">Import Contacts</string>
+    <string name="desc_settings">Settings</string>
+    <string name="error_generation">Generation Error</string>
+    <string name="settings_subscription_title">Subscription &amp; Ads</string>
+    <string name="settings_premium_active">✅ You have an active Premium subscription. Ads are disabled.</string>
+    <string name="settings_premium_inactive">The free version contains ads when generating texts.</string>
+    <string name="btn_disable_ads">Disable ads (Premium)</string>
+    <string name="label_turns_age">Turns %1$d</string>
 </resources>

@@ -35,6 +35,7 @@ import com.glazev.celebrationai.service.AuthManager
 import com.glazev.celebrationai.service.BiometricHelper
 import com.glazev.celebrationai.ui.screens.AddCelebrationScreen
 import com.glazev.celebrationai.ui.screens.CelebrationListScreen
+import com.glazev.celebrationai.ui.screens.CalendarScreen
 import com.glazev.celebrationai.ui.theme.CelebrationAITheme
 import com.glazev.celebrationai.ui.viewmodel.CelebrationViewModel
 import com.glazev.celebrationai.widget.CelebrationWidgetProvider
@@ -65,10 +66,63 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         
-        checkAndRequestPermissions()
         updateWidgets()
 
         setContent {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
+            var showPermissionDialog by remember { 
+                mutableStateOf(
+                    (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) ||
+                    (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms())
+                )
+            }
+
+            val permissionLauncher = rememberLauncherForActivityResult(
+                contract = ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                if (!isGranted) {
+                    Toast.makeText(this@MainActivity, getString(R.string.msg_no_push_permission), Toast.LENGTH_LONG).show()
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+                    try {
+                        val intent = Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                            data = android.net.Uri.parse("package:$packageName")
+                        }
+                        startActivity(intent)
+                    } catch (e: Exception) { e.printStackTrace() }
+                }
+            }
+
+            if (showPermissionDialog) {
+                androidx.compose.material3.AlertDialog(
+                    onDismissRequest = { showPermissionDialog = false },
+                    title = { androidx.compose.material3.Text(androidx.compose.ui.res.stringResource(R.string.title_notif_permission), fontWeight = androidx.compose.ui.text.font.FontWeight.Bold) },
+                    text = { androidx.compose.material3.Text(androidx.compose.ui.res.stringResource(R.string.desc_notif_permission)) },
+                    confirmButton = {
+                        androidx.compose.material3.Button(onClick = {
+                            showPermissionDialog = false
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                                permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+                                try {
+                                    val intent = Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                                        data = android.net.Uri.parse("package:$packageName")
+                                    }
+                                    startActivity(intent)
+                                } catch (e: Exception) { e.printStackTrace() }
+                            }
+                        }) {
+                            androidx.compose.material3.Text(androidx.compose.ui.res.stringResource(R.string.btn_understood))
+                        }
+                    },
+                    dismissButton = {
+                        androidx.compose.material3.OutlinedButton(onClick = { showPermissionDialog = false }) {
+                            androidx.compose.material3.Text(androidx.compose.ui.res.stringResource(R.string.btn_later))
+                        }
+                    }
+                )
+            }
+
             val settings: AppSettings = koinInject()
             var currentTheme by remember { mutableStateOf(settings.selectedTheme) }
             
@@ -113,7 +167,7 @@ class MainActivity : AppCompatActivity() {
                             lifecycleScope.launch {
                                 authManager.signInWithGoogle(token)
                                 celebrationViewModel.loadFromCloud()
-                                val msg = if (settings.selectedLanguage == AppLanguage.RU) "Вход выполнен!" else "Signed in!"
+                                val msg = getString(R.string.msg_signed_in)
                                 Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
                             }
                         }
@@ -134,7 +188,7 @@ class MainActivity : AppCompatActivity() {
                         },
                         onGoogleSignInClick = {
                             val signInIntent = authManager.getSignInIntent(
-                                webClientId = Config.GOOGLE_WEB_CLIENT_ID
+                                webClientId = getString(R.string.default_web_client_id)
                             )
                             googleSignInLauncher.launch(signInIntent)
                         }
@@ -143,14 +197,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 // Экран блокировки (можно добавить красивую заглушку)
                 Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
-            }
-        }
-    }
-
-    private fun checkAndRequestPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
             }
         }
     }
@@ -189,6 +235,8 @@ fun AppNavigation(
                 onEditClick = { celebration ->
                     navController.navigate("edit/${celebration.id}")
                 },
+                onCalendarClick = { navController.navigate("calendar") },
+                onAboutClick = { navController.navigate("about") },
                 onThemeUpdated = onThemeChange,
                 onLanguageUpdated = onLanguageChange,
                 onGoogleSignInClick = onGoogleSignInClick
@@ -223,6 +271,18 @@ fun AppNavigation(
                     onBack = { navController.popBackStack() }
                 )
             }
+        }
+        composable("calendar") {
+            CalendarScreen(
+                viewModel = viewModel,
+                onBack = { navController.popBackStack() },
+                onCelebrationClick = { celebration ->
+                    navController.navigate("edit/${celebration.id}")
+                }
+            )
+        }
+        composable("about") {
+            com.glazev.celebrationai.ui.screens.AboutScreen(onBackClick = { navController.popBackStack() })
         }
     }
 }

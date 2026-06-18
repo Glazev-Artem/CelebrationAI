@@ -15,9 +15,11 @@ private val DarkColorScheme = darkColorScheme(
     secondary = DarkSecondary,
     onSecondary = DarkOnSecondary,
     background = DarkBackground,
-    onBackground = Color.White,
+    onBackground = DarkOnSurface,
     surface = DarkSurface,
-    onSurface = Color.White,
+    surfaceVariant = DarkSurfaceVariant,
+    onSurface = DarkOnSurface,
+    onSurfaceVariant = DarkOnSurfaceVariant,
     outline = DarkOutline
 )
 
@@ -29,10 +31,11 @@ private val LightColorScheme = lightColorScheme(
     secondary = LightSecondary,
     onSecondary = LightOnSecondary,
     background = LightBackground,
-    onBackground = Color(0xFF1C1B1F),
+    onBackground = LightOnSurface,
     surface = LightSurface,
-    onSurface = Color(0xFF1C1B1F),
-    onSurfaceVariant = Color(0xFF49454F),
+    surfaceVariant = LightSurfaceVariant,
+    onSurface = LightOnSurface,
+    onSurfaceVariant = LightOnSurfaceVariant,
     outline = LightOutline
 )
 
@@ -61,6 +64,20 @@ fun CelebrationAITheme(
         AppTheme.DARK -> DarkColorScheme
         AppTheme.LIGHT -> LightColorScheme
         AppTheme.CELEBRATION -> CelebrationColorScheme
+    }
+    
+    val view = androidx.compose.ui.platform.LocalView.current
+    val systemDark = androidx.compose.foundation.isSystemInDarkTheme()
+    if (!view.isInEditMode) {
+        androidx.compose.runtime.SideEffect {
+            val window = (view.context as android.app.Activity).window
+            val insetsController = androidx.core.view.WindowCompat.getInsetsController(window, view)
+            val isDark = appTheme == AppTheme.DARK || (appTheme == AppTheme.CELEBRATION && systemDark)
+            insetsController.isAppearanceLightStatusBars = !isDark
+            insetsController.isAppearanceLightNavigationBars = !isDark
+            window.statusBarColor = android.graphics.Color.TRANSPARENT
+            window.navigationBarColor = android.graphics.Color.TRANSPARENT
+        }
     }
 
     MaterialTheme(
