@@ -1,63 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Құтты болсын!</string>
-
-    <!-- Навигация және тақырыптар -->
+    <string name="app_name">С ДР КРЧ!</string>
     <string name="title_celebrations">Менің оқиғаларым</string>
     <string name="title_add_celebration">Оқиға қосу</string>
-    <string name="title_edit_celebration">Оқиғаны өзгерту</string>
+    <string name="title_edit_celebration">Оқиғаны өңдеу</string>
     <string name="title_new_celebration">Жаңа оқиға</string>
-
-    <!-- Түймелер -->
+    <string name="title_about">Қосымша туралы</string>
+    <string name="about_version">Нұсқасы 1.1.0</string>
+    <string name="about_catalog">Қосымшалар дүкені</string>
+    <string name="about_contact_dev">Әзірлеушімен байланысу</string>
+    <string name="about_contact_dev_desc">Сұрақтар және қолдау</string>
+    <string name="about_order_dev">Әзірлеуге тапсырыс беру</string>
+    <string name="about_order_dev_desc">AI боттар мен қосымшалар жасау</string>
+    <string name="about_btn_vk">ВКонтакте</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Хат жазу</string>
     <string name="btn_save">Сақтау</string>
     <string name="btn_copy">Көшіру</string>
     <string name="btn_select">Таңдау</string>
     <string name="btn_regenerate">Қайта жазу</string>
-    <string name="btn_cancel">Бас тарту</string>
+    <string name="btn_cancel">Болдырмау</string>
     <string name="btn_done">Дайын</string>
     <string name="btn_exit">Шығу</string>
-    <string name="btn_generate_greeting">Құттықтау жасау</string>
+    <string name="btn_generate_greeting">Құттықтау құру</string>
     <string name="btn_gift_ideas">Сыйлық идеялары</string>
     <string name="btn_import_contacts">Контактілерден импорттау</string>
-    <string name="btn_backup_settings">Резервтік көшірме параметрлері</string>
-
-    <!-- Енгізу өрістері -->
-    <string name="hint_name">Есімі</string>
+    <string name="btn_backup_settings">Резервтік көшірме баптаулары</string>
+    <string name="btn_feedback">Пікір қалдыру (ВК)</string>
+    <string name="hint_name">Аты</string>
     <string name="hint_hobby">Хобби (мысалы, балық аулау, кино)</string>
-    <string name="hint_profession">Мамандығы</string>
+    <string name="hint_profession">Мамандық</string>
     <string name="label_date">Оқиға күні</string>
-    <string name="label_tone">Құттықтау үні</string>
+    <string name="label_tone">Құттықтау тоны</string>
     <string name="label_group">Топ</string>
     <string name="label_type">Оқиға түрі:</string>
-    <string name="label_name">Есімі</string>
-    <string name="label_profession">Мамандығы</string>
+    <string name="label_name">Аты</string>
+    <string name="label_profession">Мамандық</string>
     <string name="label_hobby">Хобби</string>
     <string name="label_notifications">Хабарландыру</string>
-    <string name="label_remind_ahead">"Алдын ала ескерту: %1$s"</string>
-    <string name="label_on_day">мереке күні</string>
+    <string name="label_remind_ahead">Алдын ала ескерту: %1$s</string>
+    <string name="label_on_day">оқиға күні</string>
     <string name="label_days_format">%1$d күн</string>
-
-    <!-- Күйлер мен хабарландырулар -->
-    <string name="empty_list">Мұнда әлі бос. Бірінші оқиғаны қосу үшін + басыңыз!</string>
-    <string name="loading_ai">AI сиқыры орындалуда...</string>
-    <string name="error_ai">AI-дан жауап алу мүмкін болмады</string>
-    <string name="permission_notifications_title">Параметрлер және резервтік көшірме</string>
-    <string name="permission_notifications_desc">Таңертеңгілік ескерту уақытын таңдаңыз:</string>
-
-    <!-- Сақтық көшірме нұсқаулығы -->
+    <string name="empty_list">Әзірге бос. Бірінші оқиғаны қосу үшін + басыңыз!</string>
+    <string name="loading_ai">AI сиқыры жүріп жатыр...</string>
+    <string name="error_ai">AI жауап бермеді</string>
+    <string name="permission_notifications_title">Баптаулар және көшірме</string>
+    <string name="permission_notifications_desc">Таңертеңгі ескерту уақытын таңдаңыз:</string>
     <string name="backup_title">Деректерді қалай жоғалтпауға болады?</string>
-    <string name="backup_instruction">"Деректеріңіз Google бұлтына автоматты түрде сақталады. Бұл жұмыс істеуі үшін:\n\n1. Телефон параметрлеріне өтіңіз.\n2. Google немесе Сақтық көшірме бөлімін табыңыз.\n3. Автоматты жүктеу қосулы екеніне көз жеткізіңіз.\n\nЕнді телефонды ауыстырсаңыз, барлық құттықтаулар өздігінен қалпына келеді!"</string>
-
-    <string name="footer_line1">Қолданбалар дүкені</string>
-    <string name="footer_line2">авторы Глазьев Артем</string>
-
-    <!-- UI үшін қосымша жолдар -->
-    <string name="label_zodiac">Жұлдыз жорамал</string>
-    <string name="label_chinese_zodiac">Шығыс жылы</string>
+    <string name="backup_instruction">Сіздің деректеріңіз Google Cloud-қа автоматты түрде сақталады. Қосу үшін:\n\n1. Телефон баптауларына кіріңіз.\n2. "Google" немесе "Резервтік көшірме" табыңыз.\n3. "Авто жүктеу" ҚОСУЛЫ екенін тексеріңіз.\n\nЕнді телефон ауыстырсаңыз да, барлық оқиғалар қалпына келеді!</string>
+    <string name="footer_line1">Қосымшалар дүкені</string>
+    <string name="footer_line2">автор Глазьев Артем</string>
+    <string name="label_zodiac">Жұлдызнама</string>
+    <string name="label_chinese_zodiac">Қытай жұлдызнамасы</string>
     <string name="label_lived">Өмір сүргені</string>
-    <string name="label_fun_facts">Қызықты деректер:</string>
+    <string name="label_fun_facts">Қызықты фактілер:</string>
     <string name="btn_close">Жабу</string>
-    <string name="title_ai_greeting">AI-дан құттықтау</string>
-    <string name="label_late_greeting">"Мен құттықтауға кешіктім"</string>
+    <string name="title_ai_greeting">AI құттықтауы</string>
+    <string name="label_late_greeting">Мен құттықтауға кешіктім</string>
     <string name="btn_think_greeting">Құттықтау ойлап тап</string>
     <string name="label_greeting_archive">Құттықтаулар мұрағаты:</string>
     <string name="title_gifts_for">%1$s үшін сыйлықтар</string>
@@ -67,39 +66,127 @@
     <string name="label_saved">Сақталды!</string>
     <string name="label_ai_ideas">AI идеялары:</string>
     <string name="btn_generate">Генерациялау</string>
-    <string name="hint_generate_gifts">"Шынайы сыйлық идеяларын алу үшін 'Генерациялау' түймесін басыңыз"</string>
-    <string name="title_settings">Параметрлер</string>
+    <string name="hint_generate_gifts">Реалды идеялар алу үшін \'Генерациялау\' басыңыз</string>
+    <string name="title_settings">Баптаулар</string>
     <string name="label_account">Аккаунт</string>
-    <string name="label_logged_as">Сіз келесі ретінде кірдіңіз: %1$s</string>
+    <string name="label_logged_as">Кірген аккаунт: %1$s</string>
     <string name="btn_sign_out">Шығу</string>
     <string name="btn_sign_in_google">Google арқылы кіру</string>
     <string name="label_security">Қауіпсіздік</string>
-    <string name="label_biometric_login">Биометрия арқылы кіру</string>
+    <string name="label_biometric_login">Биометриямен кіру</string>
     <string name="label_language">Тіл (AI және интерфейс)</string>
     <string name="label_theme">Дизайн тақырыбы</string>
-    <string name="theme_light">Жарық</string>
+    <string name="theme_light">Ашық</string>
     <string name="theme_dark">Қараңғы</string>
     <string name="theme_celebration">Мерекелік</string>
-    <string name="label_default_reminder">Әдепкі ескерту</string>
+    <string name="label_default_reminder">Негізгі ескерту</string>
     <string name="label_remind_before">Оқиғаға дейін </string>
-    <string name="label_days_before"> күн қалғанда</string>
+    <string name="label_days_before"> күн</string>
     <string name="label_time">Уақыты: %1$s</string>
-
-    <!-- Enums -->
+    <string name="label_today">Бүгін!</string>
+    <string name="label_years_short">жыл</string>
+    <string name="label_not_born">Әлі туған жоқ :)</string>
+    <string name="label_days_lived">Өмір сүрген күндер: %1$d</string>
+    <string name="label_privacy_policy">Құпиялылық саясаты</string>
+    <string name="title_export_db">Базаны экспорттау</string>
+    <string name="desc_export_db">Барлығын .csv файлына сақтау</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">Аты,Туған_күні,Санат,Бюджет,Жылы_бар</string>
+    <string name="msg_export_success">Деректер базасы сәтті экспортталды</string>
+    <string name="msg_export_error">Файлды экспорттау қатесі</string>
+    <string name="calendar_total_budget">Айлық жалпы бюджет:</string>
+    <string name="calendar_category_budget">Санат бюджеті:</string>
+    <string name="title_calendar_screen">Мерекелер күнтізбесі</string>
+    <string name="content_desc_prev_month">Алдыңғы ай</string>
+    <string name="content_desc_next_month">Келесі ай</string>
+    <string name="label_events_on_day">%1$d күнгі оқиғалар:</string>
+    <string name="label_no_events_day">Бұл күні оқиғалар жоқ</string>
+    <string name="paywall_title">Құттықтауды құру</string>
+    <string name="paywall_description">AI қолдану үшін Premium жазылым сатып алу немесе жарнама көру қажет.</string>
+    <string name="btn_buy_premium">Premium сатып алу</string>
+    <string name="btn_watch_ad">Жарнама көру</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Ашу</string>
+    <string name="app_main_title">С ДР КРЧ!</string>
     <string name="tone_romantic">Романтикалық</string>
     <string name="tone_solemn">Салтанатты</string>
     <string name="tone_official">Ресми</string>
     <string name="tone_humorous">Әзіл</string>
-    <string name="tone_dark_humor">Қара әзілмен</string>
-
+    <string name="tone_dark_humor">Қара әзіл</string>
     <string name="type_birthday">Туған күн</string>
     <string name="type_wedding">Үйлену тойы</string>
     <string name="type_anniversary">Мерейтой</string>
     <string name="type_other">Басқа</string>
-
     <string name="group_none">Топсыз</string>
     <string name="group_family">Отбасы</string>
     <string name="group_friends">Достар</string>
     <string name="group_work">Жұмыс</string>
     <string name="group_important">Маңызды</string>
+    <string name="zodiac_aries">Тоқты</string>
+    <string name="zodiac_taurus">Торпақ</string>
+    <string name="zodiac_gemini">Егіздер</string>
+    <string name="zodiac_cancer">Шаян</string>
+    <string name="zodiac_leo">Арыстан</string>
+    <string name="zodiac_virgo">Бикеш</string>
+    <string name="zodiac_libra">Таразы</string>
+    <string name="zodiac_scorpio">Сарышаян</string>
+    <string name="zodiac_sagittarius">Мерген</string>
+    <string name="zodiac_capricorn">Тауешкі</string>
+    <string name="zodiac_aquarius">Суқұйғыш</string>
+    <string name="zodiac_pisces">Балықтар</string>
+    <string name="cz_rat">Егеуқұйрық</string>
+    <string name="cz_ox">Өгіз</string>
+    <string name="cz_tiger">Жолбарыс</string>
+    <string name="cz_rabbit">Қоян</string>
+    <string name="cz_dragon">Айдаһар</string>
+    <string name="cz_snake">Жылан</string>
+    <string name="cz_horse">Жылқы</string>
+    <string name="cz_goat">Ешкі</string>
+    <string name="cz_monkey">Маймыл</string>
+    <string name="cz_rooster">Әтеш</string>
+    <string name="cz_dog">Ит</string>
+    <string name="cz_pig">Шошқа</string>
+    <string name="label_yes">Иә</string>
+    <string name="label_no">Жоқ</string>
+    <string name="msg_imported">Импортталды: %1$d</string>
+    <string name="msg_billing_start">RuStore іске қосылуда...</string>
+    <string name="msg_billing_success">Сатып алу сәтті аяқталды!</string>
+    <string name="msg_billing_error">RuStore қатесі: %1$s</string>
+    <string name="biometric_title">%1$s-қа кіру</string>
+    <string name="biometric_subtitle">Кіру үшін жеке басыңызды растаңыз</string>
+    <string name="notif_channel_name">Мерекелер ескертпесі</string>
+    <string name="notif_title_today">Бүгін мереке!</string>
+    <string name="notif_title_soon">Жақында мереке!</string>
+    <string name="notif_msg_today">Құттықтауды ұмытпаңыз: %1$s</string>
+    <string name="notif_msg_soon">Бір аптадан соң: %1$s. Сыйлық туралы ойланатын кез келді!</string>
+    <string name="widget_days_until">%1$d күннен кейін</string>
+    <string name="msg_no_push_permission">Рұқсатсыз push хабарландырулар жұмыс істемейді</string>
+    <string name="title_notif_permission">Хабарландыру рұқсаттары</string>
+    <string name="desc_notif_permission">Уақытылы ескертулер үшін қосымшаға хабарландыру жіберу және нақты оятқыштар орнату рұқсаттары қажет.</string>
+    <string name="btn_understood">Түсінікті</string>
+    <string name="btn_later">Кейінірек</string>
+    <string name="msg_signed_in">Кіру сәтті аяқталды!</string>
+    <string name="btn_back">Артқа</string>
+    <string name="btn_send_email">Email жіберу</string>
+    <string name="label_budget_rub">Шамамен бюджет (руб)</string>
+    <string-array name="days_of_week_short">
+        <item>Дс</item>
+        <item>Сс</item>
+        <item>Ср</item>
+        <item>Бс</item>
+        <item>Жм</item>
+        <item>Сн</item>
+        <item>Жс</item>
+    </string-array>
+    <string name="desc_calendar">Оқиғалар күнтізбесі</string>
+    <string name="desc_import">Контактілерді импорттау</string>
+    <string name="desc_settings">Баптаулар</string>
+    <string name="error_generation">Генерация қатесі</string>
+    <string name="settings_subscription_title">Жазылым және жарнама</string>
+    <string name="settings_premium_active">✅ Сізде Premium жазылым белсенді. Жарнама өшірілген.</string>
+    <string name="settings_premium_inactive">Тегін нұсқада мәтіндерді генерациялау кезінде жарнама бар.</string>
+    <string name="btn_disable_ads">Жарнаманы өшіру (Premium)</string>
+    <string name="label_turns_age">%1$d жасқа толады</string>
 </resources>

@@ -1,17 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tabriklaymiz!</string>
-
-    <!-- Navigatsiya va sarlavhalar -->
-    <string name="title_celebrations">Mening tadbirlarim</string>
-    <string name="title_add_celebration">Tadbir qo\'shish</string>
-    <string name="title_edit_celebration">Tadbirni o\'zgartirish</string>
-    <string name="title_new_celebration">Yangi tadbir</string>
-
-    <!-- Tugmalar -->
+    <string name="app_name">Tug\'ilgan kuningiz bilan!</string>
+    <string name="title_celebrations">Mening voqealarim</string>
+    <string name="title_add_celebration">Voqea qo\'shish</string>
+    <string name="title_edit_celebration">Voqeani tahrirlash</string>
+    <string name="title_new_celebration">Yangi voqea</string>
+    <string name="title_about">Ilova haqida</string>
+    <string name="about_version">Versiya 1.1.0</string>
+    <string name="about_catalog">Ilovalar do\'koni</string>
+    <string name="about_contact_dev">Dasturchi bilan bog\'lanish</string>
+    <string name="about_contact_dev_desc">Savollar va qo\'llab-quvvatlash</string>
+    <string name="about_order_dev">Ishlab chiqishga buyurtma berish</string>
+    <string name="about_order_dev_desc">AI botlar va ilovalar yaratish</string>
+    <string name="about_btn_vk">VKontakte</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Xat yozish</string>
     <string name="btn_save">Saqlash</string>
-    <string name="btn_copy">Nusxa olish</string>
+    <string name="btn_copy">Nusxalash</string>
     <string name="btn_select">Tanlash</string>
-    <string name="btn_regenerate">Qayta yozish</string>
+    <string name="btn_regenerate">Qayta yaratish</string>
     <string name="btn_cancel">Bekor qilish</string>
     <string name="btn_done">Tayyor</string>
     <string name="btn_exit">Chiqish</string>
@@ -19,58 +26,50 @@
     <string name="btn_gift_ideas">Sovg\'a g\'oyalari</string>
     <string name="btn_import_contacts">Kontaktlardan import qilish</string>
     <string name="btn_backup_settings">Zaxira nusxasi sozlamalari</string>
-
-    <!-- Kiritish maydonlari -->
+    <string name="btn_feedback">Fikr qoldirish (VK)</string>
     <string name="hint_name">Ism</string>
-    <string name="hint_hobby">Xobbi (masalan, baliq ovlash, kino)</string>
+    <string name="hint_hobby">Xobbi (masalan, baliq ovi, kino)</string>
     <string name="hint_profession">Kasbi</string>
-    <string name="label_date">Tadbir sanasi</string>
+    <string name="label_date">Voqea sanasi</string>
     <string name="label_tone">Tabrik ohangi</string>
     <string name="label_group">Guruh</string>
-    <string name="label_type">Tadbir turi:</string>
+    <string name="label_type">Voqea turi:</string>
     <string name="label_name">Ism</string>
     <string name="label_profession">Kasbi</string>
     <string name="label_hobby">Xobbi</string>
-    <string name="label_notifications">Bildirishnoma</string>
-    <string name="label_remind_ahead">"Oldindan eslatish: %1$s"</string>
-    <string name="label_on_day">bayram kuni</string>
+    <string name="label_notifications">Xabarnoma</string>
+    <string name="label_remind_ahead">Oldindan eslatish: %1$s</string>
+    <string name="label_on_day">voqea kunida</string>
     <string name="label_days_format">%1$d kun</string>
-
-    <!-- Holatlar va bildirishnomalar -->
-    <string name="empty_list">Bu yerda hali bo\'sh. Birinchi tadbirni qo\'shish uchun + tugmasini bosing!</string>
-    <string name="loading_ai">AI mo\'jizasi bajarilmoqda...</string>
-    <string name="error_ai">AI-dan javob olib bo\'lmadi</string>
+    <string name="empty_list">Bu yerda hozircha bo\'sh. Birinchi voqeani qo\'shish uchun + ni bosing!</string>
+    <string name="loading_ai">AI sehri ishlamoqda...</string>
+    <string name="error_ai">AIdan javob kelmadi</string>
     <string name="permission_notifications_title">Sozlamalar va zaxira nusxasi</string>
     <string name="permission_notifications_desc">Ertalabki eslatma vaqtini tanlang:</string>
-
-    <!-- Zaxira nusxasi ko\'rsatmasi -->
     <string name="backup_title">Ma\'lumotlarni qanday yo\'qotmaslik kerak?</string>
-    <string name="backup_instruction">"Ma'lumotlaringiz avtomatik ravishda Google Cloud-da saqlanadi. Buning uchun:\n\n1. Telefon sozlamalariga o'ting.\n2. Google yoki Zaxira nusxasi bo'limini toping.\n3. Avtomatik yuklash yoqilganligiga ishonch hosil qiling.\n\nEndi telefonni almashtirsangiz, barcha tabriklar o'z-o'zidan tiklanadi!"</string>
-
+    <string name="backup_instruction">Sizning ma\'lumotlaringiz Google Cloud\'ga avtomatik tarzda saqlanadi. Yoqish uchun:\n\n1. Telefon sozlamalariga kiring.\n2. "Google" yoki "Zaxira nusxasi"ni toping.\n3. "Avto-yuklash" YOQILGANLIGINI tekshiring.\n\nEndi telefonni almashtirsangiz ham, hamma narsa tiklanadi!</string>
     <string name="footer_line1">Ilovalar do\'koni</string>
-    <string name="footer_line2">muallif Artem Glazyev</string>
-
-    <!-- UI uchun qo\'shimcha satrlar -->
-    <string name="label_zodiac">Burj belgisi</string>
-    <string name="label_chinese_zodiac">Sharqiy yil</string>
-    <string name="label_lived">Yashaldi</string>
+    <string name="footer_line2">muallif Artem Glazev</string>
+    <string name="label_zodiac">Burj</string>
+    <string name="label_chinese_zodiac">Sharq yili</string>
+    <string name="label_lived">Yashagan</string>
     <string name="label_fun_facts">Qiziqarli faktlar:</string>
     <string name="btn_close">Yopish</string>
-    <string name="title_ai_greeting">AI-dan tabrik</string>
-    <string name="label_late_greeting">"Tabriklashga kechikdim"</string>
+    <string name="title_ai_greeting">AIdan tabrik</string>
+    <string name="label_late_greeting">Men tabriklashga kechikdim</string>
     <string name="btn_think_greeting">Tabrik o\'ylab top</string>
     <string name="label_greeting_archive">Tabriklar arxivi:</string>
     <string name="title_gifts_for">%1$s uchun sovg\'alar</string>
     <string name="label_wishlist">Istaklar ro\'yxati:</string>
-    <string name="hint_wishlist">Istaklaringizni kiriting...</string>
+    <string name="hint_wishlist">Istaklarni kiriting...</string>
     <string name="btn_save_list">Ro\'yxatni saqlash</string>
     <string name="label_saved">Saqlandi!</string>
     <string name="label_ai_ideas">AI g\'oyalari:</string>
     <string name="btn_generate">Generatsiya qilish</string>
-    <string name="hint_generate_gifts">"Haqiqiy sovg'a g'oyalarini olish uchun 'Generatsiya qilish' tugmasini bosing"</string>
+    <string name="hint_generate_gifts">Haqiqiy g\'oyalarni olish uchun \'Generatsiya qilish\'ni bosing</string>
     <string name="title_settings">Sozlamalar</string>
-    <string name="label_account">Akkaunt</string>
-    <string name="label_logged_as">Siz quyidagicha kirdingiz: %1$s</string>
+    <string name="label_account">Hisob</string>
+    <string name="label_logged_as">Kirilgan hisob: %1$s</string>
     <string name="btn_sign_out">Chiqish</string>
     <string name="btn_sign_in_google">Google orqali kirish</string>
     <string name="label_security">Xavfsizlik</string>
@@ -80,26 +79,114 @@
     <string name="theme_light">Yorug\'</string>
     <string name="theme_dark">Qorong\'u</string>
     <string name="theme_celebration">Bayramona</string>
-    <string name="label_default_reminder">Odatiy eslatma</string>
-    <string name="label_remind_before">Tadbirga </string>
-    <string name="label_days_before"> kun qolganda</string>
-    <string name="label_time">Vaqti: %1$s</string>
-
-    <!-- Enums -->
+    <string name="label_default_reminder">Standart eslatma</string>
+    <string name="label_remind_before">Oldindan </string>
+    <string name="label_days_before"> kun</string>
+    <string name="label_time">Vaqt: %1$s</string>
+    <string name="label_today">Bugun!</string>
+    <string name="label_years_short">yosh</string>
+    <string name="label_not_born">Hali tug\'ilmagan :)</string>
+    <string name="label_days_lived">Yashalgan kunlar: %1$d</string>
+    <string name="label_privacy_policy">Maxfiylik siyosati</string>
+    <string name="title_export_db">Bazani eksport qilish</string>
+    <string name="desc_export_db">Barchasini .csv fayliga saqlash</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">Ism,Tug\'ilgan_kun,Kategoriya,Budjet,Yili_bor</string>
+    <string name="msg_export_success">Ma\'lumotlar bazasi muvaffaqiyatli eksport qilindi</string>
+    <string name="msg_export_error">Faylni eksport qilish xatosi</string>
+    <string name="calendar_total_budget">Oylik umumiy byudjet:</string>
+    <string name="calendar_category_budget">Kategoriya byudjeti:</string>
+    <string name="title_calendar_screen">Bayramlar kalendari</string>
+    <string name="content_desc_prev_month">Oldingi oy</string>
+    <string name="content_desc_next_month">Keyingi oy</string>
+    <string name="label_events_on_day">%1$d kundagi voqealar:</string>
+    <string name="label_no_events_day">Bu kunda voqealar yo\'q</string>
+    <string name="paywall_title">Tabrik yaratish</string>
+    <string name="paywall_description">AIdan foydalanish uchun Premium obuna sotib olish yoki reklama ko\'rish kerak.</string>
+    <string name="btn_buy_premium">Premium sotib olish</string>
+    <string name="btn_watch_ad">Reklama ko\'rish</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Ochish</string>
+    <string name="app_main_title">С ДР КРЧ!</string>
     <string name="tone_romantic">Romantik</string>
     <string name="tone_solemn">Tantanali</string>
     <string name="tone_official">Rasmiy</string>
     <string name="tone_humorous">Hazil</string>
-    <string name="tone_dark_humor">Qora hazil bilan</string>
-
+    <string name="tone_dark_humor">Qora hazil</string>
     <string name="type_birthday">Tug\'ilgan kun</string>
     <string name="type_wedding">To\'y</string>
     <string name="type_anniversary">Yubiley</string>
     <string name="type_other">Boshqa</string>
-
     <string name="group_none">Guruhsiz</string>
     <string name="group_family">Oila</string>
     <string name="group_friends">Do\'stlar</string>
     <string name="group_work">Ish</string>
     <string name="group_important">Muhim</string>
+    <string name="zodiac_aries">Qo\'y</string>
+    <string name="zodiac_taurus">Buzoq</string>
+    <string name="zodiac_gemini">Egizaklar</string>
+    <string name="zodiac_cancer">Qisqichbaqa</string>
+    <string name="zodiac_leo">Arslon</string>
+    <string name="zodiac_virgo">Parizod</string>
+    <string name="zodiac_libra">Tarozi</string>
+    <string name="zodiac_scorpio">Chayon</string>
+    <string name="zodiac_sagittarius">O\'qotar</string>
+    <string name="zodiac_capricorn">Tog\' echkisi</string>
+    <string name="zodiac_aquarius">Qovg\'a</string>
+    <string name="zodiac_pisces">Baliq</string>
+    <string name="cz_rat">Kalamush</string>
+    <string name="cz_ox">Ho\'kiz</string>
+    <string name="cz_tiger">Yo\'lbars</string>
+    <string name="cz_rabbit">Quyon</string>
+    <string name="cz_dragon">Ajdaho</string>
+    <string name="cz_snake">Ilon</string>
+    <string name="cz_horse">Ot</string>
+    <string name="cz_goat">Echki</string>
+    <string name="cz_monkey">Maymun</string>
+    <string name="cz_rooster">Xo\'roz</string>
+    <string name="cz_dog">It</string>
+    <string name="cz_pig">Cho\'chqa</string>
+    <string name="label_yes">Ha</string>
+    <string name="label_no">Yo\'q</string>
+    <string name="msg_imported">Import qilindi: %1$d</string>
+    <string name="msg_billing_start">RuStore ishga tushirilmoqda...</string>
+    <string name="msg_billing_success">Xarid muvaffaqiyatli yakunlandi!</string>
+    <string name="msg_billing_error">RuStore xatosi: %1$s</string>
+    <string name="biometric_title">%1$s ga kirish</string>
+    <string name="biometric_subtitle">Kirish uchun shaxsingizni tasdiqlang</string>
+    <string name="notif_channel_name">Bayram eslatmalari</string>
+    <string name="notif_title_today">Bugun bayram!</string>
+    <string name="notif_title_soon">Tez orada bayram!</string>
+    <string name="notif_msg_today">Tabriklashni unutmang: %1$s</string>
+    <string name="notif_msg_soon">Bir haftadan keyin: %1$s. Sovg\'a haqida o\'ylash vaqti keldi!</string>
+    <string name="widget_days_until">%1$d kundan keyin</string>
+    <string name="msg_no_push_permission">Ruxsatsiz push xabarnomalar ishlamaydi</string>
+    <string name="title_notif_permission">Xabarnoma ruxsatlari</string>
+    <string name="desc_notif_permission">O\'z vaqtida eslatish uchun ilovaga xabarnomalar yuborish va aniq budilniklar o\'rnatish ruxsati kerak.</string>
+    <string name="btn_understood">Tushunarli</string>
+    <string name="btn_later">Keyinroq</string>
+    <string name="msg_signed_in">Kirish muvaffaqiyatli yakunlandi!</string>
+    <string name="btn_back">Orqaga</string>
+    <string name="btn_send_email">Email yuborish</string>
+    <string name="label_budget_rub">Taxminiy byudjet (rub)</string>
+    <string-array name="days_of_week_short">
+        <item>Du</item>
+        <item>Se</item>
+        <item>Ch</item>
+        <item>Pa</item>
+        <item>Ju</item>
+        <item>Sh</item>
+        <item>Ya</item>
+    </string-array>
+    <string name="desc_calendar">Voqealar kalendari</string>
+    <string name="desc_import">Kontaktlardan import qilish</string>
+    <string name="desc_settings">Sozlamalar</string>
+    <string name="error_generation">Generatsiya xatosi</string>
+    <string name="settings_subscription_title">Obuna va reklama</string>
+    <string name="settings_premium_active">✅ Sizda Premium obuna faol. Reklama o\'chirilgan.</string>
+    <string name="settings_premium_inactive">Bepul versiyada matnlarni yaratishda reklama bor.</string>
+    <string name="btn_disable_ads">Reklamani o\'chirish (Premium)</string>
+    <string name="label_turns_age">%1$d yoshga to\'ladi</string>
 </resources>

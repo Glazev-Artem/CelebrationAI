@@ -7,6 +7,15 @@
     <string name="title_edit_celebration">Изменить событие</string>
     <string name="title_new_celebration">Новое событие</string>
     <string name="title_about">О приложении</string>
+    <string name="about_version">Версия 1.1.0</string>
+    <string name="about_catalog">Лавка приложений</string>
+    <string name="about_contact_dev">Связаться с разработчиком</string>
+    <string name="about_contact_dev_desc">Вопросы и техподдержка</string>
+    <string name="about_order_dev">Заказать разработку</string>
+    <string name="about_order_dev_desc">Создание ИИ-ботов и мобильных приложений</string>
+    <string name="about_btn_vk">ВКонтакте</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Написать на почту</string>
 
     <!-- Кнопки -->
     <string name="btn_save">Сохранить</string>
@@ -92,6 +101,33 @@
     <string name="label_days_lived">Прожито дней: %1$d</string>
     <string name="label_privacy_policy">Политика конфиденциальности</string>
 
+    <!-- Экспорт БД -->
+    <string name="title_export_db">Экспорт базы данных</string>
+    <string name="desc_export_db">Сохранить всех именинников в файл .csv</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">Имя,Дата_Рождения,Категория,Бюджет,Есть_Год</string>
+    <string name="msg_export_success">База данных успешно экспортирована</string>
+    <string name="msg_export_error">Ошибка при экспорте файла</string>
+
+    <string name="calendar_total_budget">Общий бюджет на месяц:</string>
+    <string name="calendar_category_budget">Бюджет категории:</string>
+    <string name="title_calendar_screen">Календарь праздников</string>
+    <string name="content_desc_prev_month">Пред месяц</string>
+    <string name="content_desc_next_month">След месяц</string>
+    <string name="label_events_on_day">События %1$d числа:</string>
+    <string name="label_no_events_day">Нет событий в этот день</string>
+
+    <string name="paywall_title">Генерация поздравления</string>
+    <string name="paywall_description">Для использования ИИ необходимо оформить Premium подписку или посмотреть один рекламный ролик.</string>
+    <string name="btn_buy_premium">Купить Premium</string>
+    <string name="btn_watch_ad">Смотреть рекламу</string>
+    
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Открыть</string>
+    
+    <string name="app_main_title">С ДР КРЧ!</string>
     <!-- Enums -->
     <string name="tone_romantic">Романтично</string>
     <string name="tone_solemn">Торжественно</string>
@@ -137,4 +173,52 @@
     <string name="cz_rooster">Петух</string>
     <string name="cz_dog">Собака</string>
     <string name="cz_pig">Свинья</string>
+    <!-- Added for ViewModel -->
+    <string name="label_yes">Да</string>
+    <string name="label_no">Нет</string>
+    <string name="msg_imported">Импортировано: %1$d</string>
+    <!-- Billing -->
+    <string name="msg_billing_start">Запуск RuStore...</string>
+    <string name="msg_billing_success">Покупка успешна!</string>
+    <string name="msg_billing_error">Ошибка RuStore: %1$s</string>
+    <!-- Biometric -->
+    <string name="biometric_title">Вход в %1$s</string>
+    <string name="biometric_subtitle">Подтвердите личность для входа</string>
+    <!-- Notifications -->
+    <string name="notif_channel_name">Напоминания о праздниках</string>
+    <string name="notif_title_today">Сегодня праздник!</string>
+    <string name="notif_title_soon">Скоро праздник!</string>
+    <string name="notif_msg_today">Не забудьте поздравить: %1$s</string>
+    <string name="notif_msg_soon">Через неделю: %1$s. Пора подумать о подарке!</string>
+    <!-- Widget -->
+    <string name="widget_days_until">Через %1$d дн.</string>
+    <!-- MainActivity Permissions & Auth -->
+    <string name="msg_no_push_permission">Без разрешения пуш-уведомления работать не будут</string>
+    <string name="title_notif_permission">Разрешения для уведомлений</string>
+    <string name="desc_notif_permission">Для своевременных напоминаний о днях рождения приложению требуются разрешения на отправку уведомлений и установку точных будильников.</string>
+    <string name="btn_understood">Понятно</string>
+    <string name="btn_later">Позже</string>
+    <string name="msg_signed_in">Вход выполнен!</string>
+    <!-- UI Screens -->
+    <string name="btn_back">Назад</string>
+    <string name="btn_send_email">Отправить email</string>
+    <string name="label_budget_rub">Примерный бюджет (руб)</string>
+    <string-array name="days_of_week_short">
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+        <item>Вс</item>
+    </string-array>
+    <string name="desc_calendar">Календарь именинников</string>
+    <string name="desc_import">Импорт контактов</string>
+    <string name="desc_settings">Настройки</string>
+    <string name="error_generation">Ошибка генерации</string>
+    <string name="settings_subscription_title">Подписка и Реклама</string>
+    <string name="settings_premium_active">✅ У вас активна Premium подписка. Реклама отключена.</string>
+    <string name="settings_premium_inactive">Бесплатная версия содержит рекламу при генерации текстов.</string>
+    <string name="btn_disable_ads">Отключить рекламу (Premium)</string>
+    <string name="label_turns_age">Исполняется %1$d</string>
 </resources>

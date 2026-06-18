@@ -35,8 +35,8 @@ class BiometricHelper(private val context: Context) {
             })
 
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Вход в CelebrationAI")
-            .setSubtitle("Подтвердите личность для входа")
+            .setTitle(context.getString(com.glazev.celebrationai.R.string.biometric_title, context.getString(com.glazev.celebrationai.R.string.app_name)))
+            .setSubtitle(context.getString(com.glazev.celebrationai.R.string.biometric_subtitle))
             .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
             .build()
 

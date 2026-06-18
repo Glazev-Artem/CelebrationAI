@@ -23,8 +23,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.core.content.FileProvider
 
 class CelebrationViewModel(
     application: Application,
@@ -149,22 +152,108 @@ class CelebrationViewModel(
                     val bdayString = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE))
                     parseBirthday(bdayString)?.let { date ->
                         if (!allCelebrations.value.any { c -> c.name == name }) {
-                            dao.insertCelebration(Celebration(name = name, date = date.time, type = CelebrationType.BIRTHDAY))
+                            dao.insertCelebration(Celebration(name = name, date = date, type = CelebrationType.BIRTHDAY))
                             count++
                         }
                     }
                 }
             }
             withContext(Dispatchers.Main) {
-                if (count > 0) { updateWidgets(); sync(); Toast.makeText(getApplication(), "Импортировано: $count", Toast.LENGTH_SHORT).show() }
+                if (count > 0) { updateWidgets(); sync(); Toast.makeText(getApplication(), getApplication<android.app.Application>().getString(R.string.msg_imported, count), Toast.LENGTH_SHORT).show() }
             }
         }
     }
 
-    private fun parseBirthday(dateStr: String): Date? {
-        val formats = listOf(SimpleDateFormat("yyyy-MM-dd", Locale.US), SimpleDateFormat("--MM-dd", Locale.US), SimpleDateFormat("dd.MM.yyyy", Locale.US))
-        for (format in formats) { try { return format.parse(dateStr) } catch (e: Exception) {} }
+    private fun parseBirthday(bday: String): Long? {
+        val formats = listOf("yyyy-MM-dd", "--MM-dd")
+        for (format in formats) {
+            try {
+                val date = SimpleDateFormat(format, Locale.getDefault()).parse(bday)
+                if (date != null) return date.time
+            } catch (e: Exception) { }
+        }
         return null
+    }
+
+    fun exportDatabaseToCsv(uri: android.net.Uri, context: android.content.Context, onResult: (Boolean) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val celebrations = dao.getAllCelebrationsSync()
+                context.contentResolver.openOutputStream(uri)?.use { outputStream ->
+                    outputStream.write("\uFEFF".toByteArray(Charsets.UTF_8))
+                    val headers = context.getString(R.string.export_csv_headers)
+                    outputStream.write("$headers\n".toByteArray(Charsets.UTF_8))
+                    
+                    val sdfWithYear = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+                    val sdfNoYear = SimpleDateFormat("dd.MM", Locale.getDefault())
+                    
+                    for (c in celebrations) {
+                        val dateStr = if (c.hasYear) sdfWithYear.format(Date(c.date)) else sdfNoYear.format(Date(c.date))
+                        val escapedName = if (c.name.contains(",") || c.name.contains("\"")) "\"${c.name.replace("\"", "\"\"")}\"" else c.name
+                        val groupName = context.getString(c.group.displayNameRes)
+                        val budget = c.estimatedBudget
+                        val hasYearStr = if (c.hasYear) context.getString(R.string.label_yes) else context.getString(R.string.label_no)
+                        
+                        val row = "$escapedName,$dateStr,$groupName,$budget,$hasYearStr\n"
+                        outputStream.write(row.toByteArray(Charsets.UTF_8))
+                    }
+                }
+                withContext(Dispatchers.Main) {
+                    onResult(true)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    onResult(false)
+                }
+            }
+        }
+    }
+
+    fun shareDatabaseAsCsv(context: android.content.Context, onResult: (android.net.Uri?) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val celebrations = dao.getAllCelebrationsSync()
+                val exportDir = File(context.cacheDir, "exports")
+                exportDir.mkdirs()
+                val file = File(exportDir, "celebrations_export.csv")
+                
+                FileOutputStream(file).use { outputStream ->
+                    outputStream.write("\uFEFF".toByteArray(Charsets.UTF_8))
+                    val headers = context.getString(R.string.export_csv_headers)
+                    outputStream.write("$headers\n".toByteArray(Charsets.UTF_8))
+                    
+                    val sdfWithYear = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+                    val sdfNoYear = SimpleDateFormat("dd.MM", Locale.getDefault())
+                    
+                    for (c in celebrations) {
+                        val dateStr = if (c.hasYear) sdfWithYear.format(Date(c.date)) else sdfNoYear.format(Date(c.date))
+                        val escapedName = if (c.name.contains(",") || c.name.contains("\"")) "\"${c.name.replace("\"", "\"\"")}\"" else c.name
+                        val groupName = context.getString(c.group.displayNameRes)
+                        val budget = c.estimatedBudget
+                        val hasYearStr = if (c.hasYear) context.getString(R.string.label_yes) else context.getString(R.string.label_no)
+                        
+                        val row = "$escapedName,$dateStr,$groupName,$budget,$hasYearStr\n"
+                        outputStream.write(row.toByteArray(Charsets.UTF_8))
+                    }
+                }
+                
+                val uri = FileProvider.getUriForFile(
+                    context,
+                    "${context.packageName}.fileprovider",
+                    file
+                )
+                
+                withContext(Dispatchers.Main) {
+                    onResult(uri)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    onResult(null)
+                }
+            }
+        }
     }
 
     suspend fun generateAiGreeting(celebration: Celebration, isApology: Boolean = false): String? {

@@ -1,105 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Табрик!</string>
-
-    <!-- Навигатсия ва сарлавҳаҳо -->
+    <string name="app_name">Зодрӯз муборак!</string>
     <string name="title_celebrations">Рӯйдодҳои ман</string>
-    <string name="title_add_celebration">Илова кардани рӯйдод</string>
+    <string name="title_add_celebration">Иловаи рӯйдод</string>
     <string name="title_edit_celebration">Тағйир додани рӯйдод</string>
     <string name="title_new_celebration">Рӯйдоди нав</string>
-
-    <!-- Тугмаҳо -->
-    <string name="btn_save">Захира кардан</string>
+    <string name="title_about">Дар бораи барнома</string>
+    <string name="about_version">Версияи 1.1.0</string>
+    <string name="about_catalog">Дӯкони барномаҳо</string>
+    <string name="about_contact_dev">Тамос бо таҳиягар</string>
+    <string name="about_contact_dev_desc">Саволҳо ва дастгирӣ</string>
+    <string name="about_order_dev">Фармоиши таҳия</string>
+    <string name="about_order_dev_desc">Сохтани ботҳои AI ва барномаҳо</string>
+    <string name="about_btn_vk">ВКонтакте</string>
+    <string name="about_btn_tg">Telegram</string>
+    <string name="about_btn_email">Навиштани мактуб</string>
+    <string name="btn_save">Захира</string>
     <string name="btn_copy">Нусхабардорӣ</string>
-    <string name="btn_select">Интихоб кардан</string>
-    <string name="btn_regenerate">Аз нав навиштан</string>
+    <string name="btn_select">Интихоб</string>
+    <string name="btn_regenerate">Аз нав сохтан</string>
     <string name="btn_cancel">Бекор кардан</string>
     <string name="btn_done">Тайёр</string>
-    <string name="btn_exit">Хуруҷ</string>
-    <string name="btn_generate_greeting">Эҷоди табрикнома</string>
-    <string name="btn_gift_ideas">Идеяҳои туҳфа</string>
-    <string name="btn_import_contacts">Импорт аз контактҳо</string>
-    <string name="btn_backup_settings">Танзимоти нусхабардорӣ</string>
-
-    <!-- Майдонҳои воридотӣ -->
+    <string name="btn_exit">Баромад</string>
+    <string name="btn_generate_greeting">Сохтани табрикот</string>
+    <string name="btn_gift_ideas">Идеяҳои тӯҳфа</string>
+    <string name="btn_import_contacts">Воридот аз алоқаҳо</string>
+    <string name="btn_backup_settings">Танзимоти нусхаи эҳтиётӣ</string>
+    <string name="btn_feedback">Гузоштани фикр (ВК)</string>
     <string name="hint_name">Ном</string>
-    <string name="hint_hobby">Ҳобби (масалан, моҳидорӣ, кино)</string>
+    <string name="hint_hobby">Шуғл (масалан, моҳидорӣ, синамо)</string>
     <string name="hint_profession">Касб</string>
     <string name="label_date">Санаи рӯйдод</string>
-    <string name="label_tone">Оҳанги табрик</string>
+    <string name="label_tone">Оҳанги табрикот</string>
     <string name="label_group">Гурӯҳ</string>
-    <string name="label_type">Намуди рӯйдод:</string>
+    <string name="label_type">Навъи рӯйдод:</string>
     <string name="label_name">Ном</string>
     <string name="label_profession">Касб</string>
-    <string name="label_hobby">Ҳобби</string>
+    <string name="label_hobby">Шуғл</string>
     <string name="label_notifications">Огоҳинома</string>
-    <string name="label_remind_ahead">"Пешакӣ огоҳ кардан: %1$s"</string>
-    <string name="label_on_day">дар рӯзи ид</string>
+    <string name="label_remind_ahead">Пешакӣ ёдовар шудан: %1$s</string>
+    <string name="label_on_day">дар рӯзи рӯйдод</string>
     <string name="label_days_format">%1$d рӯз</string>
-
-    <!-- Ҳолатҳо ва огоҳиномаҳо -->
-    <string name="empty_list">Дар ин ҷо ҳанӯз холӣ аст. Барои илова кардани рӯйдоди аввал + пахш кунед!</string>
-    <string name="loading_ai">Магияи AI дар ҷараён аст...</string>
-    <string name="error_ai">Ҷавоб аз AI гирифта нашуд</string>
-    <string name="permission_notifications_title">Танзимот ва нусхабардорӣ</string>
-    <string name="permission_notifications_desc">Вақти огоҳии субҳро интихоб кунед:</string>
-
-    <!-- Дастури нусхабардорӣ -->
-    <string name="backup_title">Чӣ тавр маълумотро гум накунем?</string>
-    <string name="backup_instruction">"Маълумоти шумо ба таври худкор дар Google Cloud захира карда мешавад. Барои ин:\n\n1. Ба танзимоти телефон равед.\n2. Қисмати Google ё Нусхабардориро пайдо кунед.\n3. Боварӣ ҳосил кунед, ки боркунии худкор фаъол аст.\n\nАкнун, агар шумо телефонро иваз кунед, ҳама табрикҳо худашон барқарор мешаванд!"</string>
-
+    <string name="empty_list">Дар ин ҷо ҳоло холӣ аст. Барои илова кардани рӯйдоди аввал + ро пахш кунед!</string>
+    <string name="loading_ai">Сеҳри AI кор карда истодааст...</string>
+    <string name="error_ai">Ҷавоб аз AI наомад</string>
+    <string name="permission_notifications_title">Танзимот ва нусхаи эҳтиётӣ</string>
+    <string name="permission_notifications_desc">Вақти ёдоваркунии саҳариро интихоб кунед:</string>
+    <string name="backup_title">Чӣ гуна маълумотро гум накунем?</string>
+    <string name="backup_instruction">Маълумоти шумо ба таври худкор дар Google Cloud захира карда мешавад. Барои фаъол кардан:\n\n1. Ба танзимоти телефон ворид шавед.\n2. "Google" ё "Нусхаи эҳтиётӣ"-ро пайдо кунед.\n3. Тафтиш кунед, ки "Боркунии худкор" ФАЪОЛ аст.\n\nАкнун ҳатто ҳангоми иваз кардани телефон ҳама чиз барқарор мешавад!</string>
     <string name="footer_line1">Дӯкони барномаҳо</string>
-    <string name="footer_line2">муаллиф Артём Глазев</string>
-
-    <!-- Сатрҳои иловагӣ барои UI -->
-    <string name="label_zodiac">Нишони зодиак</string>
+    <string name="footer_line2">муаллиф Артем Глазев</string>
+    <string name="label_zodiac">Бурҷ</string>
     <string name="label_chinese_zodiac">Соли шарқӣ</string>
     <string name="label_lived">Зиндагӣ кардааст</string>
-    <string name="label_fun_facts">Фактҳои ҷолиб:</string>
+    <string name="label_fun_facts">Далелҳои ҷолиб:</string>
     <string name="btn_close">Пӯшидан</string>
-    <string name="title_ai_greeting">Табрик аз AI</string>
-    <string name="label_late_greeting">"Ман барои табрик дер кардам"</string>
+    <string name="title_ai_greeting">Табрикот аз AI</string>
+    <string name="label_late_greeting">Ман барои табрик дер кардам</string>
     <string name="btn_think_greeting">Табрик фикр кун</string>
-    <string name="label_greeting_archive">Архиви табрикҳо:</string>
-    <string name="title_gifts_for">Туҳфаҳо барои %1$s</string>
-    <string name="label_wishlist">Рӯйхати орзуҳо:</string>
-    <string name="hint_wishlist">Орзуҳои худро ворид кунед...</string>
+    <string name="label_greeting_archive">Архиви табрикот:</string>
+    <string name="title_gifts_for">Тӯҳфаҳо барои %1$s</string>
+    <string name="label_wishlist">Рӯйхати хоҳишҳо:</string>
+    <string name="hint_wishlist">Хоҳишҳоро ворид кунед...</string>
     <string name="btn_save_list">Захираи рӯйхат</string>
     <string name="label_saved">Захира шуд!</string>
     <string name="label_ai_ideas">Идеяҳои AI:</string>
-    <string name="btn_generate">Генерасия</string>
-    <string name="hint_generate_gifts">"Барои гирифтани идеяҳои воқеии туҳфа 'Генерасия'-ро пахш кунед"</string>
+    <string name="btn_generate">Сохтан</string>
+    <string name="hint_generate_gifts">Барои гирифтани идеяҳои воқеӣ \'Сохтан\'-ро пахш кунед</string>
     <string name="title_settings">Танзимот</string>
-    <string name="label_account">Аккаунт</string>
+    <string name="label_account">Ҳисоб</string>
     <string name="label_logged_as">Шумо ворид шудед ҳамчун: %1$s</string>
-    <string name="btn_sign_out">Хуруҷ</string>
-    <string name="btn_sign_in_google">Ворид шудан тавассути Google</string>
+    <string name="btn_sign_out">Баромад</string>
+    <string name="btn_sign_in_google">Воридшавӣ тавассути Google</string>
     <string name="label_security">Амният</string>
     <string name="label_biometric_login">Воридшавӣ бо биометрия</string>
     <string name="label_language">Забон (AI ва интерфейс)</string>
-    <string name="label_theme">Мавзӯи тарҳрезӣ</string>
-    <string name="theme_light">Рӯшан</string>
+    <string name="label_theme">Мавзӯи тарроҳӣ</string>
+    <string name="theme_light">Равшан</string>
     <string name="theme_dark">Торик</string>
     <string name="theme_celebration">Идона</string>
-    <string name="label_default_reminder">Огоҳии пешфарз</string>
-    <string name="label_remind_before">То рӯйдод </string>
-    <string name="label_days_before"> рӯз мондан</string>
+    <string name="label_default_reminder">Ёдоваркунии асосӣ</string>
+    <string name="label_remind_before">Пешакӣ </string>
+    <string name="label_days_before"> рӯз пеш</string>
     <string name="label_time">Вақт: %1$s</string>
-
-    <!-- Enums -->
+    <string name="label_today">Имрӯз!</string>
+    <string name="label_years_short">сол</string>
+    <string name="label_not_born">Ҳанӯз таваллуд нашудааст :)</string>
+    <string name="label_days_lived">Рӯзҳои зиндагӣ: %1$d</string>
+    <string name="label_privacy_policy">Сиёсати махфият</string>
+    <string name="title_export_db">Экспорти база</string>
+    <string name="desc_export_db">Ҳамаашро дар файли .csv захира кардан</string>
+    <string name="default_export_filename">celebrations_export.csv</string>
+    <string name="export_csv_headers">Ном,Зодрӯз,Категория,Буҷа,Сол_дорад</string>
+    <string name="msg_export_success">Базаи маълумот бо муваффақият содир шуд</string>
+    <string name="msg_export_error">Хатои содироти файл</string>
+    <string name="calendar_total_budget">Буҷаи умумии моҳона:</string>
+    <string name="calendar_category_budget">Буҷаи категория:</string>
+    <string name="title_calendar_screen">Тақвими идҳо</string>
+    <string name="content_desc_prev_month">Моҳи гузашта</string>
+    <string name="content_desc_next_month">Моҳи оянда</string>
+    <string name="label_events_on_day">Рӯйдодҳо дар рӯзи %1$d:</string>
+    <string name="label_no_events_day">Дар ин рӯз рӯйдод нест</string>
+    <string name="paywall_title">Сохтани табрикот</string>
+    <string name="paywall_description">Барои истифодаи AI обунаи Premium харед ё реклама бинед.</string>
+    <string name="btn_buy_premium">Хариди Premium</string>
+    <string name="btn_watch_ad">Дидани реклама</string>
+    <string name="chip_avito">Avito</string>
+    <string name="chip_wb">WB</string>
+    <string name="chip_ozon">Ozon</string>
+    <string name="chip_open">Кушодан</string>
+    <string name="app_main_title">С ДР КРЧ!</string>
     <string name="tone_romantic">Романтикӣ</string>
     <string name="tone_solemn">Тантанавӣ</string>
-    <string name="tone_official">Расмӣ</string>
+    <string name="tone_official">Расмии</string>
     <string name="tone_humorous">Шӯхӣ</string>
-    <string name="tone_dark_humor">Бо юмори сиёҳ</string>
-
-    <string name="type_birthday">Рӯзи таваллуд</string>
+    <string name="tone_dark_humor">Юмори сиёҳ</string>
+    <string name="type_birthday">Зодрӯз</string>
     <string name="type_wedding">Тӯй</string>
-    <string name="type_anniversary">Солгард</string>
+    <string name="type_anniversary">Ҷашн</string>
     <string name="type_other">Дигар</string>
-
     <string name="group_none">Бе гурӯҳ</string>
     <string name="group_family">Оила</string>
     <string name="group_friends">Дӯстон</string>
     <string name="group_work">Кор</string>
     <string name="group_important">Муҳим</string>
+    <string name="zodiac_aries">Ҳамал</string>
+    <string name="zodiac_taurus">Савр</string>
+    <string name="zodiac_gemini">Ҷавзо</string>
+    <string name="zodiac_cancer">Саратон</string>
+    <string name="zodiac_leo">Асад</string>
+    <string name="zodiac_virgo">Сунбула</string>
+    <string name="zodiac_libra">Мизон</string>
+    <string name="zodiac_scorpio">Ақраб</string>
+    <string name="zodiac_sagittarius">Қавс</string>
+    <string name="zodiac_capricorn">Ҷаддӣ</string>
+    <string name="zodiac_aquarius">Далв</string>
+    <string name="zodiac_pisces">Ҳут</string>
+    <string name="cz_rat">Каламуш</string>
+    <string name="cz_ox">ГОВ</string>
+    <string name="cz_tiger">Паланг</string>
+    <string name="cz_rabbit">Харгӯш</string>
+    <string name="cz_dragon">Аждаҳо</string>
+    <string name="cz_snake">Мор</string>
+    <string name="cz_horse">Асп</string>
+    <string name="cz_goat">Буз</string>
+    <string name="cz_monkey">Маймун</string>
+    <string name="cz_rooster">Хурус</string>
+    <string name="cz_dog">Саг</string>
+    <string name="cz_pig">Хук</string>
+    <string name="label_yes">Бале</string>
+    <string name="label_no">Не</string>
+    <string name="msg_imported">Ворид шуд: %1$d</string>
+    <string name="msg_billing_start">RuStore ба кор медарояд...</string>
+    <string name="msg_billing_success">Харид бо муваффақият анҷом ёфт!</string>
+    <string name="msg_billing_error">Хатои RuStore: %1$s</string>
+    <string name="biometric_title">Воридшавӣ ба %1$s</string>
+    <string name="biometric_subtitle">Барои воридшавӣ шахсияти худро тасдиқ кунед</string>
+    <string name="notif_channel_name">Ёдоваркунии идҳо</string>
+    <string name="notif_title_today">Имрӯз ид аст!</string>
+    <string name="notif_title_soon">Ба наздикӣ ид аст!</string>
+    <string name="notif_msg_today">Табрик карданро фаромӯш накунед: %1$s</string>
+    <string name="notif_msg_soon">Як ҳафта пас: %1$s. Вақти фикр кардан дар бораи тӯҳфа!</string>
+    <string name="widget_days_until">пас аз %1$d рӯз</string>
+    <string name="msg_no_push_permission">Бе иҷозат огоҳиномаҳои push кор намекунанд</string>
+    <string name="title_notif_permission">Иҷозат барои огоҳиномаҳо</string>
+    <string name="desc_notif_permission">Барои ёдоваркунии саривақтӣ ба барнома иҷозат барои фиристодани огоҳинома ва гузоштани зангҳои дақиқ лозим аст.</string>
+    <string name="btn_understood">Фаҳмо</string>
+    <string name="btn_later">Баъдтар</string>
+    <string name="msg_signed_in">Воридшавӣ бо муваффақият анҷом ёфт!</string>
+    <string name="btn_back">Ақиб</string>
+    <string name="btn_send_email">Фиристодани Email</string>
+    <string name="label_budget_rub">Буҷаи тахминӣ (руб)</string>
+    <string-array name="days_of_week_short">
+        <item>Дш</item>
+        <item>Сш</item>
+        <item>Чш</item>
+        <item>Пш</item>
+        <item>Ҷм</item>
+        <item>Шб</item>
+        <item>Як</item>
+    </string-array>
+    <string name="desc_calendar">Тақвими рӯйдодҳо</string>
+    <string name="desc_import">Воридот аз алоқаҳо</string>
+    <string name="desc_settings">Танзимот</string>
+    <string name="error_generation">Хатои сохтан</string>
+    <string name="settings_subscription_title">Обуна ва реклама</string>
+    <string name="settings_premium_active">✅ Шумо обунаи Premium доред. Реклама хомӯш карда шудааст.</string>
+    <string name="settings_premium_inactive">Дар версияи ройгон ҳангоми сохтани матн реклама вуҷуд дорад.</string>
+    <string name="btn_disable_ads">Хомӯш кардани реклама (Premium)</string>
+    <string name="label_turns_age">%1$d сола мешавад</string>
 </resources>

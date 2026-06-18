@@ -7,7 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -63,11 +63,11 @@ fun AddCelebrationScreen(
     var reminderHour by remember { mutableIntStateOf(celebration?.reminderHour ?: defaultHour) }
     var reminderMinute by remember { mutableIntStateOf(celebration?.reminderMinute ?: defaultMinute) }
     var reminderDaysBefore by remember { mutableIntStateOf(celebration?.reminderDaysBefore ?: appSettings.defaultReminderDaysBefore) }
+    var hasYear by remember { mutableStateOf(celebration?.hasYear ?: true) }
+    var estimatedBudget by remember { mutableStateOf(if (celebration?.estimatedBudget != null && celebration.estimatedBudget != 0) celebration.estimatedBudget.toString() else "") }
 
     val calendar = remember { Calendar.getInstance() }
-    val datePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = celebration?.date ?: calendar.timeInMillis
-    )
+    var selectedDateMillis by remember { mutableLongStateOf(celebration?.date ?: calendar.timeInMillis) }
     var showDatePicker by remember { mutableStateOf(false) }
     var showTimePicker by remember { mutableStateOf(false) }
     val timePickerState = rememberTimePickerState(
@@ -83,7 +83,7 @@ fun AddCelebrationScreen(
                     name = name,
                     type = selectedType,
                     customType = if (selectedType == CelebrationType.OTHER) customType else "",
-                    date = datePickerState.selectedDateMillis ?: calendar.timeInMillis,
+                    date = selectedDateMillis,
                     hobby = hobby,
                     profession = profession,
                     tone = selectedTone,
@@ -93,7 +93,10 @@ fun AddCelebrationScreen(
                     reminderDaysBefore = reminderDaysBefore,
                     savedGreeting = celebration?.savedGreeting,
                     giftIdeas = celebration?.giftIdeas,
-                    greetingHistory = celebration?.greetingHistory ?: ""
+                    greetingHistory = celebration?.greetingHistory ?: "",
+                    wishlist = celebration?.wishlist ?: "",
+                    estimatedBudget = estimatedBudget.toIntOrNull() ?: 0,
+                    hasYear = hasYear
                 )
             )
         }
@@ -114,7 +117,7 @@ fun AddCelebrationScreen(
                         autoSave()
                         onBack() 
                     }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.btn_cancel), tint = MaterialTheme.colorScheme.onSurface)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.btn_cancel), tint = MaterialTheme.colorScheme.onSurface)
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -210,10 +213,23 @@ fun AddCelebrationScreen(
                                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                             )
                         ) {
-                            val sdf = remember { SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()) }
-                            val date = datePickerState.selectedDateMillis ?: calendar.timeInMillis
+                            val sdf = remember(hasYear) { SimpleDateFormat(if (hasYear) "dd.MM.yyyy" else "dd.MM", Locale.getDefault()) }
+                            val date = selectedDateMillis
                             Text(stringResource(R.string.label_date) + ": ${sdf.format(Date(date))}")
                         }
+
+                        OutlinedTextField(
+                            value = estimatedBudget,
+                            onValueChange = { estimatedBudget = it.filter { char -> char.isDigit() }; autoSave() },
+                            label = { Text(stringResource(R.string.label_budget_rub)) },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            keyboardOptions = KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                                unfocusedTextColor = MaterialTheme.colorScheme.onSurface
+                            )
+                        )
 
                         OutlinedTextField(
                             value = profession,
@@ -378,17 +394,17 @@ fun AddCelebrationScreen(
         }
 
         if (showDatePicker) {
-            DatePickerDialog(
-                onDismissRequest = { showDatePicker = false },
-                confirmButton = {
-                    TextButton(onClick = { 
-                        showDatePicker = false 
-                        autoSave()
-                    }) { Text("OK") }
-                }
-            ) {
-                DatePicker(state = datePickerState)
-            }
+            com.glazev.celebrationai.ui.components.WheelDatePickerDialog(
+                initialDate = selectedDateMillis,
+                hasYear = hasYear,
+                onHasYearChange = { hasYear = it; autoSave() },
+                onDateSelected = {
+                    selectedDateMillis = it
+                    showDatePicker = false
+                    autoSave()
+                },
+                onDismiss = { showDatePicker = false }
+            )
         }
 
         if (showTimePicker) {

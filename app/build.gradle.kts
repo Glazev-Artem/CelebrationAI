@@ -32,6 +32,9 @@ android {
         val rawKey = localProperties.getProperty("OPENROUTER_API_KEY") ?: ""
         val cleanKey = rawKey.replace("\"", "") 
         buildConfigField("String", "OPENROUTER_API_KEY", "\"$cleanKey\"")
+        
+        val backendUrl = localProperties.getProperty("BACKEND_URL") ?: "https://ru.lavka-app.space"
+        buildConfigField("String", "BACKEND_URL", "\"$backendUrl\"")
     }
 
     buildTypes {
@@ -96,6 +99,12 @@ dependencies {
     
     // Lifecycle & ViewModel for Compose
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Yandex Mobile Ads
+    implementation("com.yandex.android:mobileads:7.2.0")
+
+    // RuStore Billing
+    implementation("ru.rustore.sdk:billingclient:3.2.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

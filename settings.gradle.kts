@@ -19,6 +19,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://artifactory-external.vkpartner.ru/artifactory/maven")
     }
 }
 

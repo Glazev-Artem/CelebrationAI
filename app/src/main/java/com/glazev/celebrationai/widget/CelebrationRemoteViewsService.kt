@@ -38,7 +38,7 @@ class CelebrationRemoteViewsFactory(private val context: Context) : RemoteViewsS
         val views = RemoteViews(context.packageName, R.layout.widget_item)
         
         views.setTextViewText(R.id.item_name, celebration.name)
-        views.setTextViewText(R.id.item_date, "Через ${celebration.daysUntil()} дн.")
+        views.setTextViewText(R.id.item_date, context.getString(R.string.widget_days_until, celebration.daysUntil()))
         
         // Создаем fill-in intent для клика по элементу
         val fillInIntent = Intent()

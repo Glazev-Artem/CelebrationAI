@@ -29,6 +29,25 @@ class AppSettings(context: Context) {
     var isBiometricEnabled: Boolean
         get() = prefs.getBoolean("is_biometric_enabled", false)
         set(value) = prefs.edit().putBoolean("is_biometric_enabled", value).apply()
+
+    var isSubscribed: Boolean
+        get() = prefs.getBoolean("is_subscribed", false)
+        set(value) = prefs.edit().putBoolean("is_subscribed", value).apply()
+
+    var invoiceId: String?
+        get() = prefs.getString("invoice_id", null)
+        set(value) = prefs.edit().putString("invoice_id", value).apply()
+
+    var appUserId: String
+        get() {
+            var id = prefs.getString("app_user_id", null)
+            if (id == null) {
+                id = java.util.UUID.randomUUID().toString()
+                prefs.edit().putString("app_user_id", id).apply()
+            }
+            return id
+        }
+        private set(value) {}
 }
 
 enum class AppTheme {

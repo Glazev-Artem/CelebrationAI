@@ -2,6 +2,8 @@ package com.glazev.celebrationai.data
 
 import android.content.Context
 import androidx.room.*
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 class Converters {
     @TypeConverter
@@ -19,11 +21,9 @@ class Converters {
     @TypeConverter
     fun fromGroup(group: CelebrationGroup): String = group.name
 
-    @TypeConverter
-    fun toGroup(value: String): CelebrationGroup = CelebrationGroup.valueOf(value)
 }
 
-@Database(entities = [Celebration::class], version = 10, exportSchema = false)
+@Database(entities = [Celebration::class], version = 11, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun celebrationDao(): CelebrationDao
@@ -32,6 +32,13 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
+        val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE celebrations ADD COLUMN estimatedBudget INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE celebrations ADD COLUMN hasYear INTEGER NOT NULL DEFAULT 1")
+            }
+        }
+
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -39,6 +46,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "celebration_database"
                 )
+                .addMigrations(MIGRATION_10_11)
                 .fallbackToDestructiveMigration()
                 .build()
                 INSTANCE = instance

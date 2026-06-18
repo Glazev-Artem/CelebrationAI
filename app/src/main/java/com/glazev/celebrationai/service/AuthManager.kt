@@ -20,6 +20,9 @@ class AuthManager(private val context: Context) {
         auth.addAuthStateListener {
             _user.value = it.currentUser
         }
+        if (auth.currentUser == null) {
+            auth.signInAnonymously()
+        }
     }
 
     fun getSignInIntent(webClientId: String): Intent {
