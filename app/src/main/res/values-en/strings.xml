@@ -187,6 +187,8 @@
     <string name="settings_subscription_title">Subscription &amp; Ads</string>
     <string name="settings_premium_active">✅ You have an active Premium subscription. Ads are disabled.</string>
     <string name="settings_premium_inactive">The free version contains ads when generating texts.</string>
-    <string name="btn_disable_ads">Disable ads (Premium)</string>
+    <string name="btn_disable_ads">Disable Ads (Premium)</string>
+    <string name="btn_sub_month">For 1 month</string>
+    <string name="btn_sub_year">For 1 year</string>
     <string name="label_turns_age">Turns %1$d</string>
 </resources>
