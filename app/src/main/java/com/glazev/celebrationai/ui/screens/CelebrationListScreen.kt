@@ -644,12 +644,22 @@ fun CelebrationListScreen(
                             Text(stringResource(R.string.settings_premium_active), color = Color(0xFF4CAF50), style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Text(stringResource(R.string.settings_premium_inactive), style = MaterialTheme.typography.bodyMedium)
-                            Button(
-                                onClick = { activity?.let { billingManager.purchaseSubscription(it, "premium_sub") } },
-                                modifier = Modifier.fillMaxWidth(),
-                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                            ) {
-                                Text(stringResource(R.string.btn_disable_ads))
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                Button(
+                                    onClick = { activity?.let { billingManager.purchaseSubscription(it, "1_month") } },
+                                    modifier = Modifier.weight(1f),
+                                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                                ) {
+                                    Text(stringResource(R.string.btn_sub_month))
+                                }
+                                Button(
+                                    onClick = { activity?.let { billingManager.purchaseSubscription(it, "1_year") } },
+                                    modifier = Modifier.weight(1f),
+                                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                                ) {
+                                    Text(stringResource(R.string.btn_sub_year))
+                                }
                             }
                         }
 
@@ -760,14 +770,25 @@ fun CelebrationListScreen(
                     )
                 },
                 confirmButton = {
-                    Button(
-                        onClick = {
-                            showPaywallDialog = false
-                            activity?.let { billingManager.purchaseSubscription(it, "premium_sub") }
-                        },
-                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                    ) {
-                        Text(text = stringResource(id = R.string.btn_buy_premium))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = {
+                                showPaywallDialog = false
+                                activity?.let { billingManager.purchaseSubscription(it, "1_month") }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                        ) {
+                            Text(text = stringResource(id = R.string.btn_sub_month))
+                        }
+                        Button(
+                            onClick = {
+                                showPaywallDialog = false
+                                activity?.let { billingManager.purchaseSubscription(it, "1_year") }
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                        ) {
+                            Text(text = stringResource(id = R.string.btn_sub_year))
+                        }
                     }
                 },
                 dismissButton = {

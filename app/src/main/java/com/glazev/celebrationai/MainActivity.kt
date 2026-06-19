@@ -46,6 +46,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
+import ru.rustore.sdk.pay.RuStorePayClient
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -64,6 +65,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // RuStore Pay SDK Deeplink Handling
+        if (savedInstanceState == null) {
+            RuStorePayClient.instance.getIntentInteractor().proceedIntent(intent)
+        }
+        
         enableEdgeToEdge()
         
         updateWidgets()
@@ -199,6 +206,11 @@ class MainActivity : AppCompatActivity() {
                 Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background))
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        RuStorePayClient.instance.getIntentInteractor().proceedIntent(intent)
     }
 
     private fun updateWidgets() {

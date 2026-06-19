@@ -220,5 +220,7 @@
     <string name="settings_premium_active">✅ У вас активна Premium подписка. Реклама отключена.</string>
     <string name="settings_premium_inactive">Бесплатная версия содержит рекламу при генерации текстов.</string>
     <string name="btn_disable_ads">Отключить рекламу (Premium)</string>
+    <string name="btn_sub_month">На 1 месяц</string>
+    <string name="btn_sub_year">На 1 год</string>
     <string name="label_turns_age">Исполняется %1$d</string>
 </resources>

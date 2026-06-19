@@ -66,7 +66,7 @@ fun AboutScreen(onBackClick: () -> Unit) {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = stringResource(id = R.string.about_version),
+                text = "v${com.glazev.celebrationai.BuildConfig.VERSION_NAME}",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -167,7 +167,7 @@ fun AboutScreen(onBackClick: () -> Unit) {
             
             // Privacy Policy Link
             TextButton(
-                onClick = { uriHandler.openUri("https://yandex.ru/legal/confidential/") } // TODO: Замените на реальную ссылку
+                onClick = { uriHandler.openUri("https://github.com/Glazev-Artem/CelebrationAI/blob/master/PRIVACY_POLICY.md") }
             ) {
                 Text(
                     text = stringResource(id = R.string.label_privacy_policy),

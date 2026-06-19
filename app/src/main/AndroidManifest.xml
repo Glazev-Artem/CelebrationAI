@@ -20,6 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CelebrationAI">
 
+        <!-- RuStore Pay SDK Initialization -->
+        <meta-data
+            android:name="ru.rustore.sdk.console_app_id"
+            android:value="19452535" />
+        <meta-data
+            android:name="ru.rustore.sdk.pay.scheme"
+            android:value="celebrationai" />
+
         <receiver android:name=".service.NotificationReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="com.glazev.celebrationai.ACTION_REMIND_LATER" />
@@ -57,10 +65,19 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.CelebrationAI">
+            android:theme="@style/Theme.CelebrationAI"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <!-- Intent filter for RuStore Pay Deeplinks -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="celebrationai" />
             </intent-filter>
         </activity>
 
