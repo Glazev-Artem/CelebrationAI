@@ -70,5 +70,22 @@ captures/
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 
+# Backend secrets and environment
+backend/.env
+backend/*.env
+backend/firebase_key.json
+backend/venv/
+*.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Release build outputs
+app/release/
+
+# Temporary and unzipped files
+tmp_unzip/
+
 # macOS
 .DS_Store

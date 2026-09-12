@@ -3,6 +3,7 @@ package com.glazev.celebrationai.service
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.yandex.mobile.ads.common.AdError
 import com.yandex.mobile.ads.common.AdRequestConfiguration
 import com.yandex.mobile.ads.common.AdRequestError
@@ -48,6 +49,7 @@ class YandexAdManager(private val context: Context) {
             rewardedAd?.setAdEventListener(object : RewardedAdEventListener {
                 override fun onAdShown() { }
                 override fun onAdFailedToShow(error: AdError) {
+                    Toast.makeText(context, "Ошибка показа рекламы. Попробуйте еще раз.", Toast.LENGTH_SHORT).show()
                     onFailed()
                     loadRewardedAd()
                 }
@@ -63,8 +65,9 @@ class YandexAdManager(private val context: Context) {
             rewardedAd?.show(activity)
             rewardedAd = null
         } else {
-            // Если реклама не загружена, разрешаем действие (или можно выдать ошибку)
-            onRewarded()
+            // Строгий запрет выдачи награды при отсутствии рекламы
+            Toast.makeText(context, "Реклама еще не загрузилась. Попробуйте через пару секунд", Toast.LENGTH_SHORT).show()
+            onFailed()
             loadRewardedAd()
         }
     }

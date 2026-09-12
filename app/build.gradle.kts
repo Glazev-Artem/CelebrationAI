@@ -23,8 +23,8 @@ android {
         applicationId = "com.glazev.celebrationai"
         minSdk = 29
         targetSdk = 35
-        versionCode = 3 // Увеличено для возможности загрузки обновления
-        versionName = "1.3.2"
+        versionCode = 6 // Увеличено для возможности загрузки обновления
+        versionName = "1.3.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -103,9 +103,9 @@ dependencies {
     // Yandex Mobile Ads
     implementation("com.yandex.android:mobileads:7.2.0")
 
-    // RuStore Billing
-    implementation("ru.rustore.sdk:billingclient:3.2.0")
-
+    // RuStore Pay SDK
+    implementation(platform("ru.rustore.sdk:bom:2025.11.01"))
+    implementation("ru.rustore.sdk:pay")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
